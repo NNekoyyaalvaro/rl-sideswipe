@@ -25,6 +25,7 @@
             --blue-electric: #1e90ff;
             --neon-cyan: #00e5ff;
             --deep-navy: #0b0b1a;
+            --discord-blurple: #5865F2;
         }
 
         * {
@@ -42,7 +43,7 @@
             background: var(--bg-deep);
             font-family: 'Inter', 'Rajdhani', sans-serif;
             color: var(--text-primary);
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
             cursor: default;
             position: relative;
@@ -71,7 +72,7 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.25;
+            opacity: 0.2;
         }
 
         /* Main Container */
@@ -88,58 +89,51 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.8rem 0;
+            padding: 1.2rem 2rem;
             position: relative;
             z-index: 10;
             backdrop-filter: blur(12px);
-            background: rgba(10, 10, 15, 0.6);
+            background: rgba(10, 10, 15, 0.7);
             border-bottom: 1px solid var(--border-subtle);
             border-radius: 0 0 32px 32px;
-            padding-left: 2rem;
-            padding-right: 2rem;
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            flex-wrap: wrap;
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
         }
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent), #c0392b);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif;
-            color: white;
+        .logo-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
             box-shadow: 0 0 25px rgba(255, 77, 46, 0.7);
-            animation: logoPulse 3s infinite;
-            transform: rotate(0deg);
-            transition: transform 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            cursor: pointer;
+            background: #0a0a0f;
         }
-        .logo-icon:hover {
-            transform: rotate(10deg) scale(1.08);
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
         }
-        @keyframes logoPulse {
-            0% {
-                box-shadow: 0 0 25px rgba(255, 77, 46, 0.7);
-            }
-            50% {
-                box-shadow: 0 0 45px rgba(255, 106, 61, 0.9), 0 0 70px rgba(255, 77, 46, 0.5);
-            }
-            100% {
-                box-shadow: 0 0 25px rgba(255, 77, 46, 0.7);
-            }
+        .logo-circle:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 40px rgba(255, 106, 61, 0.9);
+        }
+        .logo-circle:hover img {
+            transform: scale(1.1);
         }
         .logo-text {
             font-family: 'Orbitron', sans-serif;
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             letter-spacing: 1px;
             background: linear-gradient(to right, #ffffff, #e0e0e0);
             -webkit-background-clip: text;
@@ -150,7 +144,7 @@
         }
         .logo-text small {
             display: block;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 500;
             letter-spacing: 4px;
             color: var(--accent-glow);
@@ -158,19 +152,21 @@
         }
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
+            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--text-secondary);
             font-weight: 600;
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             letter-spacing: 2px;
             transition: 0.3s;
             position: relative;
             text-transform: uppercase;
+            white-space: nowrap;
         }
         .nav-links a::after {
             content: '';
@@ -196,14 +192,14 @@
             grid-template-columns: 1.2fr 0.9fr;
             gap: 2rem;
             align-items: center;
-            min-height: 80vh;
-            margin-bottom: 4rem;
+            min-height: 70vh;
+            margin-bottom: 3rem;
             position: relative;
         }
         .hero-content h1 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 4.5rem;
+            font-size: 4.2rem;
             line-height: 1.1;
             text-transform: uppercase;
             background: linear-gradient(180deg, #ffffff 20%, #ff8a6f 80%);
@@ -254,8 +250,8 @@
             position: relative;
         }
         .rocket-sphere {
-            width: 320px;
-            height: 320px;
+            width: 300px;
+            height: 300px;
             background: radial-gradient(circle at 30% 30%, rgba(255, 77, 46, 0.25), rgba(10, 10, 15, 0.9));
             border-radius: 50%;
             display: flex;
@@ -281,10 +277,10 @@
             }
         }
 
-        /* RANK SECTION */
+        /* SECTION TITLES */
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 800;
             text-align: center;
             margin: 4rem 0 2.5rem;
@@ -303,14 +299,16 @@
             border-radius: 20px;
             box-shadow: 0 0 25px var(--accent);
         }
-        .rank-grid {
+
+        /* CARDS & GRIDS */
+        .card-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 1.8rem;
-            margin: 2rem 0 4rem;
+            margin: 2rem 0 3rem;
         }
-        .rank-card {
+        .rank-card, .style-card {
             background: rgba(20, 20, 30, 0.7);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -320,53 +318,54 @@
             text-align: center;
             transition: 0.3s;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            cursor: default;
         }
-        .rank-card:hover {
+        .rank-card:hover, .style-card:hover {
             transform: translateY(-8px);
             border-color: var(--accent);
             box-shadow: 0 0 35px rgba(255, 77, 46, 0.4);
         }
-        .rank-icon {
+        .rank-icon, .style-icon {
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
-        .rank-name {
+        .rank-name, .style-name {
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
         }
+        .style-card {
+            width: 170px;
+        }
 
-        /* VERIFY SECTION (con el texto proporcionado) */
-        .verify-box {
+        /* VERIFY & INFO BOXES */
+        .info-box {
             background: rgba(18, 18, 28, 0.8);
             backdrop-filter: blur(18px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
-            padding: 3rem;
-            margin: 3rem 0 4rem;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+        .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2.5rem;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
         }
-        .verify-text h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-        .steps {
+        .steps-list {
             list-style: none;
             counter-reset: step;
         }
-        .steps li {
+        .steps-list li {
             counter-increment: step;
-            margin-bottom: 1.8rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
             display: flex;
             align-items: flex-start;
             gap: 1rem;
         }
-        .steps li::before {
+        .steps-list li::before {
             content: counter(step);
             background: var(--accent);
             color: white;
@@ -380,7 +379,7 @@
             flex-shrink: 0;
             box-shadow: 0 0 20px var(--accent);
         }
-        .warning-note {
+        .warning-box {
             background: rgba(255, 77, 46, 0.15);
             border-left: 4px solid var(--accent);
             padding: 1rem;
@@ -396,6 +395,26 @@
             font-weight: 600;
             display: inline-block;
         }
+        .btn-discord {
+            background: var(--discord-blurple);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.6);
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        .btn-discord:hover {
+            box-shadow: 0 0 45px rgba(88, 101, 242, 0.9);
+            transform: scale(1.03);
+        }
 
         /* FOOTER */
         .footer {
@@ -404,22 +423,30 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-secondary);
             font-size: 0.9rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
+        /* RESPONSIVE */
         @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
             .hero-content h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
-            .verify-box {
+            .two-col {
                 grid-template-columns: 1fr;
             }
             .nav-links {
-                gap: 1.2rem;
+                gap: 1rem;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
             }
         }
     </style>
@@ -429,19 +456,22 @@
     <canvas id="particles-canvas"></canvas>
 
     <div class="main-container">
-        <!-- NAVBAR -->
+        <!-- NAVBAR CON LOGO CIRCULAR -->
         <nav class="navbar">
             <div class="logo-area">
-                <div class="logo-icon">RL</div>
+                <div class="logo-circle">
+                    <img src="https://cdn.discordapp.com/attachments/1093559207372013629/1500215726584103034/IMG_0745.png?ex=69f7a045&is=69f64ec5&hm=e4962e059b145c98322f69b7ce0a658e727c756af8d09a133ff32b9da2b06b9c&" alt="RLPG Logo">
+                </div>
                 <div class="logo-text">
                     ROCKET LEAGUE<br><small>PROFESSIONAL GROUP</small>
                 </div>
             </div>
             <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#ranks">Rangos</a></li>
-                <li><a href="#verificacion">Verificación</a></li>
-                <li><a href="#comunidad">Comunidad</a></li>
+                <li><a href="#informacion">Información</a></li>
+                <li><a href="#rangos">Rangos</a></li>
+                <li><a href="#estilos">Estilos</a></li>
+                <li><a href="#unirse">Unirse</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
 
@@ -450,8 +480,8 @@
             <div class="hero-content">
                 <h1>ROCKET LEAGUE <span class="highlight">SIDESWIPE</span></h1>
                 <p class="hero-sub">ELITE PROFESSIONAL GROUP · DOMINA EL CAMPO MÓVIL</p>
-                <p style="margin-bottom:2rem; color:#b0b0c0;">Únete a la comunidad más competitiva de Rocket League Sideswipe. Verifica tu rango y compite con los mejores.</p>
-                <a href="#verificacion" class="btn-glow">VERIFICAR RANGO AHORA</a>
+                <p style="margin-bottom:2rem; color:#b0b0c0;">La comunidad más competitiva de habla hispana. Verifica tu rango, encuentra compañeros y participa en torneos exclusivos.</p>
+                <a href="#unirse" class="btn-glow">UNIRSE AHORA</a>
             </div>
             <div class="hero-visual">
                 <div class="rocket-sphere">
@@ -460,54 +490,132 @@
             </div>
         </section>
 
-        <!-- RANGOS SECTION -->
-        <h2 class="section-title" id="ranks">🏆 RANGOS SIDESWIPE</h2>
-        <div class="rank-grid">
-            <div class="rank-card"><div class="rank-icon">🥉</div><div class="rank-name" style="color:#cd7f32;">BRONCE</div></div>
-            <div class="rank-card"><div class="rank-icon">🥈</div><div class="rank-name" style="color:#c0c0c0;">PLATA</div></div>
-            <div class="rank-card"><div class="rank-icon">🥇</div><div class="rank-name" style="color:#f0b90b;">ORO</div></div>
-            <div class="rank-card"><div class="rank-icon">💠</div><div class="rank-name" style="color:#4dd0e1;">PLATINO</div></div>
-            <div class="rank-card"><div class="rank-icon">💎</div><div class="rank-name" style="color:#b39ddb;">DIAMANTE</div></div>
-            <div class="rank-card"><div class="rank-icon">👑</div><div class="rank-name" style="color:#ff4d2e;">CAMPEÓN+</div></div>
-        </div>
-
-        <!-- VERIFICACIÓN DE RANGO (texto exacto proporcionado) -->
-        <section id="verificacion" class="verify-box">
-            <div class="verify-text">
-                <h2>📸 CÓMO VERIFICAR TU RANGO</h2>
-                <p style="margin-bottom:1.5rem; color:#ccc;">HOW TO VERIFY YOUR RANK</p>
-                <p style="margin-bottom:1.5rem;">Para obtener su rol de rango (Bronce, Plata, Oro, Platino, Diamante o superior), debe proporcionar prueba de su habilidad.<br><strong>Pasos a seguir:</strong></p>
-                <ol class="steps">
-                    <li>Toma una captura de pantalla de tu perfil del juego donde sea visible tu rango actual.</li>
-                    <li>Envía la foto vía DM (Mensaje Directo) a <span class="discord-mention">@875667977402466306</span>.</li>
-                    <li>Espera a que un moderador verifique la imagen y asigne tu rol.</li>
-                </ol>
-                <div class="warning-note">
-                    ⚠️ Nota: Las capturas de pantalla falsas resultarán en una prohibición inmediata del servidor.
-                </div>
-            </div>
-            <div style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.3); border-radius:30px; padding:1.5rem;">
-                <div style="text-align:center;">
-                    <span style="font-size:5rem;">🛡️✅</span>
-                    <p style="font-family:'Orbitron',sans-serif; margin-top:1rem;">VERIFICACIÓN SEGURA</p>
-                    <p style="color:#aaa;">ROL ASIGNADO EN < 24H</p>
+        <!-- ==================== SECCIÓN INFORMACIÓN ==================== -->
+        <section id="informacion">
+            <h2 class="section-title">📖 INFORMACIÓN</h2>
+            <div class="info-box">
+                <div style="display:flex; flex-wrap:wrap; gap:2rem; align-items: center;">
+                    <div style="flex:2; min-width:280px;">
+                        <h3 style="font-family:'Orbitron',sans-serif; font-size:1.8rem; margin-bottom:1rem;">🚀 ROCKET LEAGUE SIDESWIPE</h3>
+                        <p style="font-size:1.1rem; margin-bottom:1rem;">Rocket League Sideswipe es la adaptación para dispositivos móviles del exitoso juego de Psyonix. Lanzado en 2021, ofrece partidas rápidas 1v1 y 2v2 con una perspectiva lateral única. Con controles táctiles y soporte para mando, modos como Duelo, Dobles, Baloncesto y Voleibol, el juego ha desarrollado una escena competitiva vibrante.</p>
+                        <p>En <strong>ROCKET LEAGUE PROFESSIONAL GROUP</strong> reunimos a los jugadores más apasionados de Sideswipe. Nuestro servidor de Discord ofrece sistema de rangos verificado, entrenadores, torneos y una comunidad activa dispuesta a mejorar.</p>
+                    </div>
+                    <div style="flex:1; min-width:200px; background:rgba(255,77,46,0.1); border-radius:30px; padding:1.5rem; text-align:center;">
+                        <span style="font-size:4rem;">🏟️</span>
+                        <p style="font-weight:700;">PLATAFORMAS: iOS & Android</p>
+                        <p>Modos: 1v1, 2v2, Baloncesto, Voleibol</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- INFORMACIÓN ADICIONAL RL SIDESWIPE -->
-        <section id="comunidad" style="margin: 4rem 0; background:rgba(255,255,255,0.02); border-radius:40px; padding:3rem;">
-            <h2 style="font-family:'Orbitron',sans-serif; font-size:2.5rem; margin-bottom:1.5rem;">🌐 ROCKET LEAGUE SIDESWIPE</h2>
-            <p style="font-size:1.2rem; max-width:800px;">Rocket League Sideswipe es la versión móvil del aclamado juego de Psyonix. Combina acción de fútbol con vehículos en partidas 1v1 o 2v2. Con controles táctiles optimizados, modos competitivos y una escena profesional en crecimiento, nuestro grupo reúne a los jugadores más dedicados.</p>
-            <div style="display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap;">
-                <div style="flex:1; min-width:200px;"><strong>🎮 Modos:</strong> Duelo, Dobles, Baloncesto, Voleibol</div>
-                <div style="flex:1; min-width:200px;"><strong>📱 Plataforma:</strong> iOS & Android</div>
-                <div style="flex:1; min-width:200px;"><strong>🏟️ Arenas:</strong> Variedad de estadios dinámicos</div>
+        <!-- ==================== SECCIÓN RANGOS ==================== -->
+        <section id="rangos">
+            <h2 class="section-title">🏆 RANGOS Y ROLES</h2>
+            
+            <!-- Rangos de habilidad -->
+            <h3 style="text-align:center; font-family:'Orbitron',sans-serif; margin:2rem 0 1rem;">🎖️ RANGOS DE HABILIDAD (BRONCE A GRAN CAMPEÓN)</h3>
+            <div class="card-grid">
+                <div class="rank-card"><div class="rank-icon">🥉</div><div class="rank-name" style="color:#cd7f32;">BRONCE</div></div>
+                <div class="rank-card"><div class="rank-icon">🥈</div><div class="rank-name" style="color:#c0c0c0;">PLATA</div></div>
+                <div class="rank-card"><div class="rank-icon">🥇</div><div class="rank-name" style="color:#f0b90b;">ORO</div></div>
+                <div class="rank-card"><div class="rank-icon">💠</div><div class="rank-name" style="color:#4dd0e1;">PLATINO</div></div>
+                <div class="rank-card"><div class="rank-icon">💎</div><div class="rank-name" style="color:#b39ddb;">DIAMANTE</div></div>
+                <div class="rank-card"><div class="rank-icon">👑</div><div class="rank-name" style="color:#ff4d2e;">CAMPEÓN</div></div>
+                <div class="rank-card"><div class="rank-icon">🌟</div><div class="rank-name" style="color:#ffd700;">GRAN CAMPEÓN</div></div>
+            </div>
+
+            <!-- Cómo conseguir roles / Funciones especiales -->
+            <div class="info-box two-col">
+                <div>
+                    <h3 style="font-family:'Orbitron',sans-serif;">🎓 FUNCIONES ESPECIALES</h3>
+                    <ul style="list-style:none; padding:0; margin-top:1rem;">
+                        <li style="margin-bottom:1rem;">🧠 <strong>COACH:</strong> ¿Diamante o superior y quieres ayudar? Solicita el puesto enviando un mensaje a un moderador.</li>
+                        <li style="margin-bottom:1rem;">🛡️ <strong>VETERANO:</strong> Otorgado a miembros activos por más de 3 meses.</li>
+                        <li style="margin-bottom:1rem;">🏆 <strong>MVP MENSUAL:</strong> Para el jugador destacado del mes.</li>
+                        <li style="margin-bottom:1rem;">⭐ <strong>MEJOR JUGADOR DEL SERVIDOR:</strong> Solo uno. Se obtiene ganando nuestros torneos oficiales 1v1.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-family:'Orbitron',sans-serif;">📱 MÉTODO DE ENTRADA</h3>
+                    <p style="margin:1rem 0;">Autoasignación enviando un mensaje a <span class="discord-mention">@875667977402466306</span> con el rol específico:</p>
+                    <p>📱 para jugador táctil</p>
+                    <p>🎮 para jugador con controlador</p>
+                    <h3 style="font-family:'Orbitron',sans-serif; margin-top:1.5rem;">🚀 AYUDANTES DE RANGO</h3>
+                    <p>Busca miembros con el rol <strong>Ayudante de rango ⚡</strong> si necesitas ayuda para subir o quieres ayudar a otros.</p>
+                </div>
+            </div>
+
+            <!-- Verificación de rango (texto proporcionado con cambio a ticket) -->
+            <div class="info-box">
+                <h3 style="font-family:'Orbitron',sans-serif; font-size:1.8rem;">📸 CÓMO VERIFICAR TU RANGO / HOW TO VERIFY YOUR RANK</h3>
+                <p style="margin-bottom:1.5rem;">Para obtener su rol de rango (Bronce, Plata, Oro, Platino, Diamante o superior), debe proporcionar prueba de su habilidad.</p>
+                <ol class="steps-list">
+                    <li>Toma una captura de pantalla de tu perfil del juego donde sea visible tu rango actual.</li>
+                    <li>Envía la foto mediante un <strong>ticket en el canal de soporte</strong> o contacta a <span class="discord-mention">@875667977402466306</span>.</li>
+                    <li>Espera a que un moderador verifique la imagen y asigne tu rol.</li>
+                </ol>
+                <div class="warning-box">
+                    ⚠️ Nota: Las capturas de pantalla falsas resultarán en una prohibición inmediata del servidor.
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN ESTILOS DE JUEGO ==================== -->
+        <section id="estilos">
+            <h2 class="section-title">🎭 ESTILO DE JUEGO E IDENTIDAD</h2>
+            <div class="info-box">
+                <p style="text-align:center; font-size:1.2rem; margin-bottom:2rem;">¡Muéstrales a todos cómo juegas! Para obtener estos roles, abre un <strong>ticket en el canal de soporte</strong> con un pequeño clip de tu juego o simplemente pregunta por el que mejor se adapte a ti.</p>
+                <div class="card-grid">
+                    <div class="style-card"><div class="style-icon">🌪️</div><div class="style-name">FREESTYLER</div><p style="font-size:0.8rem; margin-top:0.5rem;">Regates aéreos, tiros al techo, goles con estilo.</p></div>
+                    <div class="style-card"><div class="style-icon">🎯</div><div class="style-name">DELANTERO</div><p style="font-size:0.8rem; margin-top:0.5rem;">Siempre marca y lidera el ataque.</p></div>
+                    <div class="style-card"><div class="style-icon">🧤</div><div class="style-name">PORTERO</div><p style="font-size:0.8rem; margin-top:0.5rem;">La pared en la red que salva cada tiro.</p></div>
+                    <div class="style-card"><div class="style-icon">🔄</div><div class="style-name">ROTADOR</div><p style="font-size:0.8rem; margin-top:0.5rem;">Táctico, domina posicionamiento y juego en equipo.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN UNIRSE ==================== -->
+        <section id="unirse">
+            <h2 class="section-title">🔗 UNIRSE A LA COMUNIDAD</h2>
+            <div class="info-box" style="text-align:center;">
+                <p style="font-size:1.3rem; margin-bottom:2rem;">Únete a nuestro servidor de Discord y forma parte de la élite de Rocket League Sideswipe.</p>
+                <a href="https://discord.gg/2x2w4Zwtb2" target="_blank" class="btn-discord">
+                    <span style="font-size:1.8rem;">🕹️</span> UNIRSE AL SERVIDOR
+                </a>
+                <p style="margin-top:1.5rem; color:var(--text-secondary);">Enlace: <code style="background:#1e1e2a; padding:0.3rem 0.8rem; border-radius:8px;">https://discord.gg/2x2w4Zwtb2</code></p>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN CONTACTO ==================== -->
+        <section id="contacto">
+            <h2 class="section-title">📬 CONTÁCTANOS</h2>
+            <div class="info-box" style="text-align:center;">
+                <p style="font-size:1.2rem;">Por el momento, la única forma de contacto oficial es a través de nuestro <strong>servidor de Discord</strong>.</p>
+                <p style="margin:1rem 0;">Allí podrás hablar con el staff, abrir tickets de soporte y mantenerte al día de todas las novedades.</p>
+                <a href="https://discord.gg/2x2w4Zwtb2" target="_blank" class="btn-discord" style="margin-top:1rem;">
+                    <span>💬</span> IR A DISCORD
+                </a>
+            </div>
+        </section>
+
+        <!-- ==================== SECCIÓN EXTRA: TORNEOS Y CONSEJOS ==================== -->
+        <section id="torneos">
+            <h2 class="section-title">🏅 TORNEOS Y COMPETICIONES</h2>
+            <div class="info-box two-col">
+                <div>
+                    <h3 style="font-family:'Orbitron',sans-serif;">🏆 TORNEOS OFICIALES</h3>
+                    <p>Organizamos torneos 1v1 y 2v2 periódicos con premios exclusivos. El ganador del torneo 1v1 recibe el rol de <strong>MEJOR JUGADOR DEL SERVIDOR ⭐</strong>. Estate atento a los anuncios en Discord.</p>
+                </div>
+                <div>
+                    <h3 style="font-family:'Orbitron',sans-serif;">📈 CONSEJOS PARA MEJORAR</h3>
+                    <p>Practica el control del balón en el techo, domina los "flip resets" laterales y comunícate con tu compañero. ¿Necesitas ayuda? Busca un <strong>Coach 🧠</strong> o un <strong>Ayudante de rango ⚡</strong> en el servidor.</p>
+                </div>
             </div>
         </section>
 
         <div class="footer">
-            © 2026 ROCKET LEAGUE PROFESSIONAL GROUP · RL Sideswipe Elite · No afiliado a Psyonix o Epic Games. <br>Comunidad de jugadores dedicada a la excelencia competitiva.
+            © 2026 ROCKET LEAGUE PROFESSIONAL GROUP · RL Sideswipe Elite · Comunidad no afiliada a Psyonix o Epic Games. <br>Diseñado para la excelencia competitiva en Sideswipe.
         </div>
     </div>
 
@@ -515,8 +623,7 @@
         (function() {
             // Cursor trail effect
             const trail = document.getElementById('cursorTrail');
-            let mouseX = 0,
-                mouseY = 0;
+            let mouseX = 0, mouseY = 0;
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
@@ -551,8 +658,8 @@
                     this.x = Math.random() * width;
                     this.y = Math.random() * height;
                     this.size = Math.random() * 2.2 + 0.8;
-                    this.speedX = (Math.random() - 0.5) * 0.6;
-                    this.speedY = (Math.random() - 0.5) * 0.6;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
                     this.life = Math.random() * 200 + 80;
                     this.maxLife = this.life;
                 }
@@ -576,7 +683,7 @@
                 }
             }
 
-            const particleCount = 130;
+            const particleCount = 120;
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
@@ -591,8 +698,8 @@
             }
             animateParticles();
 
-            // Interactivity: subtle glow on rank cards
-            const cards = document.querySelectorAll('.rank-card');
+            // Interactivity on cards
+            const cards = document.querySelectorAll('.rank-card, .style-card');
             cards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
                     card.style.borderColor = '#ff4d2e';
