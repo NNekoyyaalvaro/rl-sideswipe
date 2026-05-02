@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ROCKET LEAGUE PROFESSIONAL GROUP | Sideswipe Elite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0a0f;
+            --bg-card: #111118;
+            --accent: #ff4d2e;
+            --accent-glow: #ff6a3d;
+            --gold: #f0b90b;
+            --gold-glow: #ffd54f;
+            --plat: #4dd0e1;
+            --diamond: #b39ddb;
+            --bronze: #cd7f32;
+            --silver: #c0c0c0;
+            --text-primary: #e8e8f0;
+            --text-secondary: #a0a0b8;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --blue-electric: #1e90ff;
+            --neon-cyan: #00e5ff;
+            --deep-navy: #0b0b1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background: var(--bg-deep);
+            font-family: 'Inter', 'Rajdhani', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+            cursor: default;
+            position: relative;
+        }
+
+        /* Custom Cursor Trail */
+        .cursor-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+            opacity: 0.7;
+            transition: transform 0.1s ease-out;
+        }
+
+        /* Animated Background Particles */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+
+        /* Main Container */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 0;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+            background: rgba(10, 10, 15, 0.6);
+            border-bottom: 1px solid var(--border-subtle);
+            border-radius: 0 0 32px 32px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), #c0392b);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            color: white;
+            box-shadow: 0 0 25px rgba(255, 77, 46, 0.7);
+            animation: logoPulse 3s infinite;
+            transform: rotate(0deg);
+            transition: transform 0.3s;
+        }
+        .logo-icon:hover {
+            transform: rotate(10deg) scale(1.08);
+        }
+        @keyframes logoPulse {
+            0% {
+                box-shadow: 0 0 25px rgba(255, 77, 46, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 45px rgba(255, 106, 61, 0.9), 0 0 70px rgba(255, 77, 46, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 25px rgba(255, 77, 46, 0.7);
+            }
+        }
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: var(--accent-glow);
+            -webkit-text-fill-color: var(--accent-glow);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            position: relative;
+            text-transform: uppercase;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s ease;
+            box-shadow: 0 0 15px var(--accent);
+        }
+        .nav-links a:hover {
+            color: white;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.9fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 80vh;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        .hero-content h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 20%, #ff8a6f 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 25px rgba(255, 77, 46, 0.6));
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .highlight {
+            color: var(--accent);
+            -webkit-text-fill-color: var(--accent);
+            background: none;
+            text-shadow: 0 0 30px var(--accent);
+        }
+        .hero-sub {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .btn-glow {
+            background: linear-gradient(135deg, var(--accent), #d6341c);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(255, 77, 46, 0.8);
+            transition: 0.3s;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 55px rgba(255, 106, 61, 1);
+            transform: translateY(-3px);
+        }
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .rocket-sphere {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 77, 46, 0.25), rgba(10, 10, 15, 0.9));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 90px rgba(255, 77, 46, 0.45);
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+        }
+        .inner-badge {
+            font-size: 5rem;
+            filter: drop-shadow(0 0 25px gold);
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-18px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* RANK SECTION */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 4rem 0 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: white;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 90px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 20px;
+            box-shadow: 0 0 25px var(--accent);
+        }
+        .rank-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin: 2rem 0 4rem;
+        }
+        .rank-card {
+            background: rgba(20, 20, 30, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 2rem 1.5rem;
+            width: 150px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+        .rank-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 0 35px rgba(255, 77, 46, 0.4);
+        }
+        .rank-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .rank-name {
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* VERIFY SECTION (con el texto proporcionado) */
+        .verify-box {
+            background: rgba(18, 18, 28, 0.8);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 3rem;
+            margin: 3rem 0 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+        .verify-text h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .steps {
+            list-style: none;
+            counter-reset: step;
+        }
+        .steps li {
+            counter-increment: step;
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .steps li::before {
+            content: counter(step);
+            background: var(--accent);
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 0 20px var(--accent);
+        }
+        .warning-note {
+            background: rgba(255, 77, 46, 0.15);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+        .discord-mention {
+            background: #5865F2;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .verify-box {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-trail" id="cursorTrail"></div>
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="main-container">
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="logo-area">
+                <div class="logo-icon">RL</div>
+                <div class="logo-text">
+                    ROCKET LEAGUE<br><small>PROFESSIONAL GROUP</small>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#ranks">Rangos</a></li>
+                <li><a href="#verificacion">Verificación</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
+            </ul>
+        </nav>
+
+        <!-- HERO -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>ROCKET LEAGUE <span class="highlight">SIDESWIPE</span></h1>
+                <p class="hero-sub">ELITE PROFESSIONAL GROUP · DOMINA EL CAMPO MÓVIL</p>
+                <p style="margin-bottom:2rem; color:#b0b0c0;">Únete a la comunidad más competitiva de Rocket League Sideswipe. Verifica tu rango y compite con los mejores.</p>
+                <a href="#verificacion" class="btn-glow">VERIFICAR RANGO AHORA</a>
+            </div>
+            <div class="hero-visual">
+                <div class="rocket-sphere">
+                    <span class="inner-badge">⚽🚀</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RANGOS SECTION -->
+        <h2 class="section-title" id="ranks">🏆 RANGOS SIDESWIPE</h2>
+        <div class="rank-grid">
+            <div class="rank-card"><div class="rank-icon">🥉</div><div class="rank-name" style="color:#cd7f32;">BRONCE</div></div>
+            <div class="rank-card"><div class="rank-icon">🥈</div><div class="rank-name" style="color:#c0c0c0;">PLATA</div></div>
+            <div class="rank-card"><div class="rank-icon">🥇</div><div class="rank-name" style="color:#f0b90b;">ORO</div></div>
+            <div class="rank-card"><div class="rank-icon">💠</div><div class="rank-name" style="color:#4dd0e1;">PLATINO</div></div>
+            <div class="rank-card"><div class="rank-icon">💎</div><div class="rank-name" style="color:#b39ddb;">DIAMANTE</div></div>
+            <div class="rank-card"><div class="rank-icon">👑</div><div class="rank-name" style="color:#ff4d2e;">CAMPEÓN+</div></div>
+        </div>
+
+        <!-- VERIFICACIÓN DE RANGO (texto exacto proporcionado) -->
+        <section id="verificacion" class="verify-box">
+            <div class="verify-text">
+                <h2>📸 CÓMO VERIFICAR TU RANGO</h2>
+                <p style="margin-bottom:1.5rem; color:#ccc;">HOW TO VERIFY YOUR RANK</p>
+                <p style="margin-bottom:1.5rem;">Para obtener su rol de rango (Bronce, Plata, Oro, Platino, Diamante o superior), debe proporcionar prueba de su habilidad.<br><strong>Pasos a seguir:</strong></p>
+                <ol class="steps">
+                    <li>Toma una captura de pantalla de tu perfil del juego donde sea visible tu rango actual.</li>
+                    <li>Envía la foto vía DM (Mensaje Directo) a <span class="discord-mention">@875667977402466306</span>.</li>
+                    <li>Espera a que un moderador verifique la imagen y asigne tu rol.</li>
+                </ol>
+                <div class="warning-note">
+                    ⚠️ Nota: Las capturas de pantalla falsas resultarán en una prohibición inmediata del servidor.
+                </div>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.3); border-radius:30px; padding:1.5rem;">
+                <div style="text-align:center;">
+                    <span style="font-size:5rem;">🛡️✅</span>
+                    <p style="font-family:'Orbitron',sans-serif; margin-top:1rem;">VERIFICACIÓN SEGURA</p>
+                    <p style="color:#aaa;">ROL ASIGNADO EN < 24H</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFORMACIÓN ADICIONAL RL SIDESWIPE -->
+        <section id="comunidad" style="margin: 4rem 0; background:rgba(255,255,255,0.02); border-radius:40px; padding:3rem;">
+            <h2 style="font-family:'Orbitron',sans-serif; font-size:2.5rem; margin-bottom:1.5rem;">🌐 ROCKET LEAGUE SIDESWIPE</h2>
+            <p style="font-size:1.2rem; max-width:800px;">Rocket League Sideswipe es la versión móvil del aclamado juego de Psyonix. Combina acción de fútbol con vehículos en partidas 1v1 o 2v2. Con controles táctiles optimizados, modos competitivos y una escena profesional en crecimiento, nuestro grupo reúne a los jugadores más dedicados.</p>
+            <div style="display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap;">
+                <div style="flex:1; min-width:200px;"><strong>🎮 Modos:</strong> Duelo, Dobles, Baloncesto, Voleibol</div>
+                <div style="flex:1; min-width:200px;"><strong>📱 Plataforma:</strong> iOS & Android</div>
+                <div style="flex:1; min-width:200px;"><strong>🏟️ Arenas:</strong> Variedad de estadios dinámicos</div>
+            </div>
+        </section>
+
+        <div class="footer">
+            © 2026 ROCKET LEAGUE PROFESSIONAL GROUP · RL Sideswipe Elite · No afiliado a Psyonix o Epic Games. <br>Comunidad de jugadores dedicada a la excelencia competitiva.
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Cursor trail effect
+            const trail = document.getElementById('cursorTrail');
+            let mouseX = 0,
+                mouseY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                trail.style.left = mouseX + 'px';
+                trail.style.top = mouseY + 'px';
+                trail.style.opacity = '0.8';
+            });
+            document.addEventListener('mouseleave', () => {
+                trail.style.opacity = '0';
+            });
+
+            // Particles Canvas
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+
+            function resizeCanvas() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 2.2 + 0.8;
+                    this.speedX = (Math.random() - 0.5) * 0.6;
+                    this.speedY = (Math.random() - 0.5) * 0.6;
+                    this.life = Math.random() * 200 + 80;
+                    this.maxLife = this.life;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.life--;
+                    if (this.life <= 0 || this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+                        this.reset();
+                        this.x = Math.random() * width;
+                        this.y = Math.random() * height;
+                        this.life = this.maxLife;
+                    }
+                }
+                draw(ctx) {
+                    const opacity = Math.min(1, this.life / this.maxLife) * 0.6;
+                    ctx.fillStyle = `rgba(255, 100, 50, ${opacity})`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            const particleCount = 130;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, width, height);
+                for (let p of particles) {
+                    p.update();
+                    p.draw(ctx);
+                }
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+
+            // Interactivity: subtle glow on rank cards
+            const cards = document.querySelectorAll('.rank-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.borderColor = '#ff4d2e';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.borderColor = 'rgba(255,255,255,0.08)';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
