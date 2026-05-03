@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>ROCKET LEAGUE PROFESSIONAL GROUP | Sideswipe Elite</title>
+    <title>ROCKET LEAGUE PROFESSIONAL GROUP | Sideswipe Elite - La Mejor Web del Universo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #0a0a0f;
             --bg-card: #111118;
+            --bg-section1: #0d0d1a;
+            --bg-section2: #0f0f1c;
+            --bg-section3: #0b0b16;
+            --bg-section4: #111122;
+            --bg-section5: #0e0e18;
+            --bg-section6: #10101e;
+            --bg-section7: #0c0c14;
+            --bg-section8: #13131f;
             --accent: #ff4d2e;
             --accent-glow: #ff6a3d;
             --gold: #f0b90b;
@@ -21,11 +29,21 @@
             --silver: #c0c0c0;
             --text-primary: #e8e8f0;
             --text-secondary: #a0a0b8;
+            --text-tertiary: #707088;
             --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.12);
             --blue-electric: #1e90ff;
             --neon-cyan: #00e5ff;
             --deep-navy: #0b0b1a;
             --discord-blurple: #5865F2;
+            --green-neon: #39ff14;
+            --purple-neon: #bf5af2;
+            --orange-neon: #ff9500;
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            --card-hover-shadow: 0 30px 60px rgba(255, 77, 46, 0.3);
+            --glass-bg: rgba(20, 20, 35, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --section-padding: 5rem 0;
         }
 
         * {
@@ -37,34 +55,36 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
+            scroll-padding-top: 130px;
         }
 
         body {
             background: var(--bg-deep);
-            font-family: 'Inter', 'Rajdhani', sans-serif;
+            font-family: 'Inter', 'Space Grotesk', sans-serif;
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             cursor: default;
             position: relative;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Custom Cursor Trail */
         .cursor-trail {
             position: fixed;
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: var(--accent-glow);
             border-radius: 50%;
             pointer-events: none;
             z-index: 99999;
-            box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
-            opacity: 0.7;
-            transition: transform 0.1s ease-out;
+            box-shadow: 0 0 25px var(--accent), 0 0 50px var(--accent);
+            opacity: 0.6;
+            transition: transform 0.08s ease-out;
+            mix-blend-mode: screen;
         }
 
-        /* Animated Background Particles */
-        #particles-canvas {
+        #particles-canvas,
+        #particles-canvas2 {
             position: fixed;
             top: 0;
             left: 0;
@@ -72,33 +92,38 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.2;
+        }
+        #particles-canvas {
+            opacity: 0.18;
+        }
+        #particles-canvas2 {
+            opacity: 0.1;
         }
 
-        /* Main Container */
         .main-container {
             position: relative;
             z-index: 1;
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        /* NAVIGATION */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 2rem;
-            position: relative;
-            z-index: 10;
-            backdrop-filter: blur(12px);
-            background: rgba(10, 10, 15, 0.7);
+            padding: 1rem 2.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 18, 0.8);
             border-bottom: 1px solid var(--border-subtle);
-            border-radius: 0 0 32px 32px;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 1rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
             flex-wrap: wrap;
+            gap: 1rem;
         }
         .logo-area {
             display: flex;
@@ -106,142 +131,224 @@
             gap: 1rem;
         }
         .logo-circle {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 25px rgba(255, 77, 46, 0.7);
-            transition: transform 0.3s ease, box-shadow 0.3s;
+            border: 2.5px solid var(--accent);
+            box-shadow: 0 0 30px rgba(255, 77, 46, 0.6);
+            transition: all 0.35s ease;
             cursor: pointer;
             background: #0a0a0f;
+            flex-shrink: 0;
         }
         .logo-circle img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
         .logo-circle:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 40px rgba(255, 106, 61, 0.9);
+            transform: scale(1.12) rotate(5deg);
+            box-shadow: 0 0 50px rgba(255, 106, 61, 0.85);
         }
         .logo-circle:hover img {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
         .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 800;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            font-weight: 900;
+            font-size: 1.35rem;
+            letter-spacing: 1.5px;
+            background: linear-gradient(180deg, #ffffff 0%, #ffccbc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            line-height: 1.15;
         }
         .logo-text small {
             display: block;
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 5px;
             color: var(--accent-glow);
             -webkit-text-fill-color: var(--accent-glow);
         }
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
             flex-wrap: wrap;
+            align-items: center;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--text-secondary);
             font-weight: 600;
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1rem;
             letter-spacing: 2px;
             transition: 0.3s;
             position: relative;
             text-transform: uppercase;
             white-space: nowrap;
+            padding: 0.5rem 0;
         }
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -6px;
+            bottom: -2px;
             left: 0;
             width: 0%;
-            height: 2px;
+            height: 2.5px;
             background: var(--accent);
-            transition: 0.3s ease;
-            box-shadow: 0 0 15px var(--accent);
+            transition: 0.35s ease;
+            box-shadow: 0 0 20px var(--accent);
+            border-radius: 10px;
         }
         .nav-links a:hover {
-            color: white;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
         .nav-links a:hover::after {
             width: 100%;
         }
+        .nav-links .nav-dropdown {
+            position: relative;
+        }
+        .nav-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-medium);
+            border-radius: 20px;
+            padding: 0.8rem 0;
+            min-width: 200px;
+            z-index: 200;
+        }
+        .nav-dropdown:hover .nav-dropdown-content {
+            display: block;
+        }
+        .nav-dropdown-content a {
+            display: block;
+            padding: 0.6rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .nav-dropdown-content a:hover {
+            background: rgba(255, 77, 46, 0.15);
+            color: white;
+        }
 
-        /* HERO SECTION */
+        .section-divider {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--gold), var(--accent), transparent);
+            margin: 0;
+            opacity: 0.6;
+            border-radius: 2px;
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(180deg, rgba(10, 10, 20, 0) 0%, rgba(10, 10, 25, 0.9) 100%);
+            padding-top: 2rem;
+        }
         .hero {
             display: grid;
-            grid-template-columns: 1.2fr 0.9fr;
-            gap: 2rem;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 3rem;
             align-items: center;
-            min-height: 70vh;
-            margin-bottom: 3rem;
+            min-height: 75vh;
+            margin-bottom: 2rem;
             position: relative;
         }
         .hero-content h1 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 4.2rem;
-            line-height: 1.1;
+            font-size: 5rem;
+            line-height: 1.05;
             text-transform: uppercase;
-            background: linear-gradient(180deg, #ffffff 20%, #ff8a6f 80%);
+            background: linear-gradient(180deg, #ffffff 15%, #ff6b4a 85%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 25px rgba(255, 77, 46, 0.6));
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
+            filter: drop-shadow(0 0 35px rgba(255, 77, 46, 0.7));
+            margin-bottom: 1.2rem;
+            letter-spacing: 3px;
         }
         .highlight {
             color: var(--accent);
             -webkit-text-fill-color: var(--accent);
             background: none;
-            text-shadow: 0 0 30px var(--accent);
+            text-shadow: 0 0 40px var(--accent);
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%,
+            100% {
+                text-shadow: 0 0 40px var(--accent);
+            }
+            50% {
+                text-shadow: 0 0 70px var(--accent-glow), 0 0 100px var(--accent);
+            }
         }
         .hero-sub {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-tertiary);
             margin-bottom: 2rem;
-            font-weight: 400;
+            max-width: 550px;
+            line-height: 1.7;
         }
         .btn-glow {
-            background: linear-gradient(135deg, var(--accent), #d6341c);
+            background: linear-gradient(135deg, var(--accent), #c0392b);
             border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+            padding: 1.1rem 3rem;
+            border-radius: 60px;
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: white;
-            font-size: 1rem;
+            font-size: 1.05rem;
             cursor: pointer;
-            box-shadow: 0 0 30px rgba(255, 77, 46, 0.8);
-            transition: 0.3s;
+            box-shadow: 0 0 35px rgba(255, 77, 46, 0.8);
+            transition: all 0.35s;
             text-transform: uppercase;
             display: inline-block;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+        .btn-glow:hover::before {
+            opacity: 1;
         }
         .btn-glow:hover {
-            box-shadow: 0 0 55px rgba(255, 106, 61, 1);
-            transform: translateY(-3px);
+            box-shadow: 0 0 65px rgba(255, 106, 61, 1);
+            transform: translateY(-4px);
+            letter-spacing: 3.5px;
         }
         .hero-visual {
             display: flex;
@@ -250,108 +357,250 @@
             position: relative;
         }
         .rocket-sphere {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 77, 46, 0.25), rgba(10, 10, 15, 0.9));
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 77, 46, 0.3), rgba(10, 10, 15, 0.85));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 90px rgba(255, 77, 46, 0.45);
-            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 120px rgba(255, 77, 46, 0.5);
+            animation: float 7s ease-in-out infinite;
             position: relative;
         }
         .inner-badge {
-            font-size: 5rem;
-            filter: drop-shadow(0 0 25px gold);
+            font-size: 7rem;
+            filter: drop-shadow(0 0 30px gold);
+            animation: spinSlow 20s linear infinite;
+        }
+        @keyframes spinSlow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-18px);
-            }
+            0%,
             100% {
                 transform: translateY(0px);
             }
+            50% {
+                transform: translateY(-22px);
+            }
         }
 
-        /* SECTION TITLES */
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
             text-align: center;
-            margin: 4rem 0 2.5rem;
+            margin: 2rem 0 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             color: white;
             position: relative;
+            line-height: 1.3;
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 90px;
+            width: 100px;
             height: 4px;
-            background: var(--accent);
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
             margin: 1rem auto 0;
             border-radius: 20px;
-            box-shadow: 0 0 25px var(--accent);
+            box-shadow: 0 0 30px var(--accent);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* CARDS & GRIDS */
         .card-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.8rem;
+            gap: 2rem;
             margin: 2rem 0 3rem;
         }
-        .rank-card, .style-card {
-            background: rgba(20, 20, 30, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 28px;
-            padding: 2rem 1.5rem;
-            width: 150px;
+        .rank-card,
+        .style-card,
+        .info-card,
+        .arena-card,
+        .vehicle-card,
+        .mechanic-card,
+        .news-card,
+        .training-card,
+        .tool-card,
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 2.2rem 1.8rem;
             text-align: center;
-            transition: 0.3s;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            box-shadow: var(--card-shadow);
             cursor: default;
+            position: relative;
+            overflow: hidden;
         }
-        .rank-card:hover, .style-card:hover {
-            transform: translateY(-8px);
+        .rank-card:hover,
+        .style-card:hover,
+        .info-card:hover,
+        .arena-card:hover,
+        .vehicle-card:hover,
+        .mechanic-card:hover,
+        .news-card:hover,
+        .training-card:hover,
+        .tool-card:hover,
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.03);
             border-color: var(--accent);
-            box-shadow: 0 0 35px rgba(255, 77, 46, 0.4);
+            box-shadow: var(--card-hover-shadow);
+            background: rgba(30, 30, 45, 0.75);
         }
-        .rank-icon, .style-icon {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-        .rank-name, .style-name {
-            font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
+        .rank-card {
+            width: 150px;
         }
         .style-card {
-            width: 170px;
+            width: 175px;
+        }
+        .info-card {
+            width: 280px;
+            text-align: left;
+        }
+        .arena-card {
+            width: 220px;
+        }
+        .vehicle-card {
+            width: 200px;
+        }
+        .mechanic-card {
+            width: 260px;
+            text-align: left;
+        }
+        .news-card {
+            width: 300px;
+            text-align: left;
+        }
+        .training-card {
+            width: 280px;
+            text-align: left;
+        }
+        .tool-card {
+            width: 280px;
+            text-align: center;
+        }
+        .testimonial-card {
+            width: 350px;
+            text-align: left;
+        }
+        .rank-icon,
+        .style-icon,
+        .info-icon,
+        .arena-icon,
+        .vehicle-icon,
+        .mechanic-icon,
+        .news-icon,
+        .training-icon,
+        .tool-icon,
+        .testimonial-icon {
+            font-size: 3.5rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .rank-name,
+        .style-name,
+        .info-name,
+        .arena-name,
+        .vehicle-name,
+        .mechanic-name,
+        .news-name,
+        .training-name,
+        .tool-name,
+        .testimonial-name {
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
         }
 
-        /* VERIFY & INFO BOXES */
+        .section-dark {
+            background: var(--bg-section1);
+            padding: var(--section-padding);
+            border-radius: 50px 50px 0 0;
+            margin-top: 2rem;
+        }
+        .section-darker {
+            background: var(--bg-section2);
+            padding: var(--section-padding);
+        }
+        .section-deep {
+            background: var(--bg-section3);
+            padding: var(--section-padding);
+            border-radius: 0 0 50px 50px;
+        }
+        .section-alt {
+            background: var(--bg-section4);
+            padding: var(--section-padding);
+            border-radius: 50px;
+            margin: 2rem 0;
+        }
+        .section-accent {
+            background: var(--bg-section5);
+            padding: var(--section-padding);
+            border-radius: 50px;
+            margin: 2rem 0;
+        }
+        .section-neon {
+            background: var(--bg-section6);
+            padding: var(--section-padding);
+            border-radius: 50px;
+            margin: 2rem 0;
+        }
+        .section-special {
+            background: var(--bg-section7);
+            padding: var(--section-padding);
+            border-radius: 50px;
+            margin: 2rem 0;
+        }
+        .section-extra {
+            background: var(--bg-section8);
+            padding: var(--section-padding);
+            border-radius: 50px;
+            margin: 2rem 0;
+        }
         .info-box {
-            background: rgba(18, 18, 28, 0.8);
-            backdrop-filter: blur(18px);
+            background: rgba(22, 22, 38, 0.75);
+            backdrop-filter: blur(22px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
-            padding: 2.5rem;
+            padding: 3rem;
             margin: 2.5rem 0;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s;
+        }
+        .info-box:hover {
+            border-color: rgba(255, 77, 46, 0.4);
+            box-shadow: 0 35px 70px rgba(255, 77, 46, 0.15);
         }
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
+            gap: 3rem;
+        }
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
         .steps-list {
             list-style: none;
@@ -359,94 +608,266 @@
         }
         .steps-list li {
             counter-increment: step;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             font-size: 1.05rem;
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
+            gap: 1.2rem;
+            line-height: 1.6;
         }
         .steps-list li::before {
             content: counter(step);
             background: var(--accent);
             color: white;
-            font-weight: bold;
+            font-weight: 700;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 0 20px var(--accent);
+            box-shadow: 0 0 25px var(--accent);
+            font-family: 'Orbitron', sans-serif;
         }
         .warning-box {
-            background: rgba(255, 77, 46, 0.15);
-            border-left: 4px solid var(--accent);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-top: 1.5rem;
+            background: rgba(255, 77, 46, 0.12);
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-top: 1.8rem;
             font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .success-box {
+            background: rgba(57, 255, 20, 0.08);
+            border-left: 5px solid var(--green-neon);
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin-top: 1.8rem;
+            font-weight: 500;
+        }
+        .info-mini-box {
+            background: rgba(30, 144, 255, 0.08);
+            border-left: 5px solid var(--blue-electric);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            margin: 1rem 0;
         }
         .discord-mention {
             background: #5865F2;
             color: white;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
+            padding: 0.25rem 1rem;
+            border-radius: 25px;
             font-weight: 600;
             display: inline-block;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
         .btn-discord {
             background: var(--discord-blurple);
             color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+            padding: 1.1rem 2.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2.5px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.55);
+            transition: all 0.35s;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-discord:hover {
+            box-shadow: 0 0 55px rgba(88, 101, 242, 0.9);
+            transform: scale(1.05);
+            background: #4752c4;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
             font-weight: 700;
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 2px;
             text-decoration: none;
-            display: inline-flex;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 0 35px rgba(255, 77, 46, 0.6);
+        }
+        .glossary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .glossary-table th {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            text-align: left;
+        }
+        .glossary-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(20, 20, 35, 0.5);
+        }
+        .glossary-table tr:hover td {
+            background: rgba(40, 40, 60, 0.6);
+        }
+        .stat-counter-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 30px;
+            min-width: 180px;
+            border: 1px solid var(--border-subtle);
+        }
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-shadow: 0 0 30px var(--accent);
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, transparent, var(--accent), var(--gold), var(--accent), transparent);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 0 25px rgba(88, 101, 242, 0.6);
-            transition: 0.3s;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            position: relative;
         }
-        .btn-discord:hover {
-            box-shadow: 0 0 45px rgba(88, 101, 242, 0.9);
-            transform: scale(1.03);
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
         }
-
-        /* FOOTER */
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            border: 1px solid var(--border-subtle);
+        }
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 30px var(--accent);
+            z-index: 2;
+        }
         .footer {
             text-align: center;
-            padding: 2.5rem;
+            padding: 3rem;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 3rem;
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            margin-top: 4rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px 50px 0 0;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
+            .two-col,
+            .three-col {
+                grid-template-columns: 1fr;
+            }
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 3.2rem;
             }
-            .two-col {
-                grid-template-columns: 1fr;
+            .hero-desc {
+                max-width: 100%;
             }
-            .nav-links {
-                gap: 1rem;
-                justify-content: center;
-                margin-top: 1rem;
+            .rocket-sphere {
+                width: 250px;
+                height: 250px;
             }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+            .timeline-content {
+                width: 100%;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+        @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
-                gap: 1rem;
                 align-items: center;
+                border-radius: 0 0 25px 25px;
+            }
+            .nav-links {
+                gap: 0.8rem;
+                justify-content: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .info-box {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -454,260 +875,704 @@
 <body>
     <div class="cursor-trail" id="cursorTrail"></div>
     <canvas id="particles-canvas"></canvas>
+    <canvas id="particles-canvas2"></canvas>
 
     <div class="main-container">
-        <!-- NAVBAR CON LOGO CIRCULAR -->
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
             <div class="logo-area">
                 <div class="logo-circle">
-                    <img src="https://cdn.discordapp.com/attachments/1093559207372013629/1500215726584103034/IMG_0745.png?ex=69f7a045&is=69f64ec5&hm=e4962e059b145c98322f69b7ce0a658e727c756af8d09a133ff32b9da2b06b9c&" alt="RLPG Logo">
+                    <img src="https://cdn.discordapp.com/attachments/1093559207372013629/1500215726584103034/IMG_0745.png?ex=69f7a045&is=69f64ec5&hm=e4962e059b145c98322f69b7ce0a658e727c756af8d09a133ff32b9da2b06b9c&" alt="RLPG Logo Oficial" loading="eager">
                 </div>
                 <div class="logo-text">
                     ROCKET LEAGUE<br><small>PROFESSIONAL GROUP</small>
                 </div>
             </div>
             <ul class="nav-links">
-                <li><a href="#informacion">Información</a></li>
+                <li><a href="#informacion">Info</a></li>
+                <li><a href="#noticias">Noticias</a></li>
                 <li><a href="#rangos">Rangos</a></li>
                 <li><a href="#estilos">Estilos</a></li>
+                <li><a href="#entrenamiento">Guía</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">Más ▼</a>
+                    <div class="nav-dropdown-content">
+                        <a href="#mecanicas">Mecánicas</a>
+                        <a href="#arenas">Arenas</a>
+                        <a href="#vehiculos">Vehículos</a>
+                        <a href="#estrategias">Estrategias</a>
+                        <a href="#configuracion">Config</a>
+                        <a href="#glosario">Glosario</a>
+                        <a href="#mmr">MMR</a>
+                        <a href="#reputacion">Reputación</a>
+                        <a href="#clips">Clips</a>
+                        <a href="#herramientas">Herramientas</a>
+                        <a href="#testimonios">Testimonios</a>
+                    </div>
+                </li>
                 <li><a href="#unirse">Unirse</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
 
-        <!-- HERO -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h1>ROCKET LEAGUE <span class="highlight">SIDESWIPE</span></h1>
-                <p class="hero-sub">ELITE PROFESSIONAL GROUP · DOMINA EL CAMPO MÓVIL</p>
-                <p style="margin-bottom:2rem; color:#b0b0c0;">La comunidad más competitiva de habla hispana. Verifica tu rango, encuentra compañeros y participa en torneos exclusivos.</p>
-                <a href="#unirse" class="btn-glow">UNIRSE AHORA</a>
-            </div>
-            <div class="hero-visual">
-                <div class="rocket-sphere">
-                    <span class="inner-badge">⚽🚀</span>
+        <section id="inicio" class="hero-wrapper">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>ROCKET LEAGUE <span class="highlight">SIDESWIPE</span></h1>
+                    <p class="hero-sub">ELITE PROFESSIONAL GROUP · DOMINA EL CAMPO MÓVIL</p>
+                    <p class="hero-desc">Bienvenido a la comunidad de habla hispana más completa de Rocket League Sideswipe. Estrategias avanzadas, torneos exclusivos, sistema de rangos verificado y los mejores jugadores te esperan. Únete a la élite.</p>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <a href="#unirse" class="btn-glow">🚀 UNIRSE AHORA</a>
+                        <a href="#rangos" class="btn-outline">🏆 VER RANGOS</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="rocket-sphere">
+                        <span class="inner-badge">⚽🚀</span>
+                    </div>
                 </div>
             </div>
         </section>
+        <div class="section-divider"></div>
 
         <!-- ==================== SECCIÓN INFORMACIÓN ==================== -->
-        <section id="informacion">
-            <h2 class="section-title">📖 INFORMACIÓN</h2>
+        <section id="informacion" class="section-dark">
+            <h2 class="section-title">📖 INFORMACIÓN GENERAL</h2>
+            <p class="section-subtitle">Todo lo que necesitas saber sobre Rocket League Sideswipe y nuestra comunidad profesional.</p>
             <div class="info-box">
-                <div style="display:flex; flex-wrap:wrap; gap:2rem; align-items: center;">
+                <div style="display:flex; flex-wrap:wrap; gap:3rem; align-items: flex-start;">
                     <div style="flex:2; min-width:280px;">
-                        <h3 style="font-family:'Orbitron',sans-serif; font-size:1.8rem; margin-bottom:1rem;">🚀 ROCKET LEAGUE SIDESWIPE</h3>
-                        <p style="font-size:1.1rem; margin-bottom:1rem;">Rocket League Sideswipe es la adaptación para dispositivos móviles del exitoso juego de Psyonix. Lanzado en 2021, ofrece partidas rápidas 1v1 y 2v2 con una perspectiva lateral única. Con controles táctiles y soporte para mando, modos como Duelo, Dobles, Baloncesto y Voleibol, el juego ha desarrollado una escena competitiva vibrante.</p>
-                        <p>En <strong>ROCKET LEAGUE PROFESSIONAL GROUP</strong> reunimos a los jugadores más apasionados de Sideswipe. Nuestro servidor de Discord ofrece sistema de rangos verificado, entrenadores, torneos y una comunidad activa dispuesta a mejorar.</p>
+                        <h3 style="font-family:'Orbitron',sans-serif; font-size:2rem; margin-bottom:1.2rem;">🚀 ¿QUÉ ES ROCKET LEAGUE SIDESWIPE?</h3>
+                        <p style="font-size:1.1rem; margin-bottom:1.2rem;">Rocket League Sideswipe es la adaptación oficial para dispositivos móviles (iOS y Android) del aclamado juego de Psyonix, lanzado globalmente en noviembre de 2021. A diferencia de la versión de PC/consola, Sideswipe presenta una perspectiva lateral 2D que cambia completamente la dinámica de juego, ofreciendo partidas rápidas y frenéticas de 1v1 y 2v2.</p>
+                        <p style="margin-bottom:1rem;">El juego conserva la esencia de Rocket League: fútbol con vehículos propulsados por cohetes, pero adaptado magistralmente a pantallas táctiles con controles intuitivos y soporte para mandos Bluetooth. Los jugadores pueden realizar acrobacias aéreas, usar el turbo, y ejecutar mecánicas avanzadas como el "flip reset" lateral o el "stall" para mantener el balón en el aire.</p>
+                        <div class="info-mini-box">
+                            <strong>🎮 Desarrollador:</strong> Psyonix (Epic Games) &nbsp;|&nbsp; <strong>📱 Plataformas:</strong> iOS, Android &nbsp;|&nbsp; <strong>🌍 Lanzamiento:</strong> Noviembre 2021
+                        </div>
                     </div>
-                    <div style="flex:1; min-width:200px; background:rgba(255,77,46,0.1); border-radius:30px; padding:1.5rem; text-align:center;">
-                        <span style="font-size:4rem;">🏟️</span>
-                        <p style="font-weight:700;">PLATAFORMAS: iOS & Android</p>
-                        <p>Modos: 1v1, 2v2, Baloncesto, Voleibol</p>
+                    <div style="flex:1; min-width:220px; background:rgba(255,77,46,0.08); border-radius:35px; padding:2rem; text-align:center;">
+                        <span style="font-size:5rem;">🏟️</span>
+                        <p style="font-weight:700; font-size:1.2rem;">MODOS DE JUEGO</p>
+                        <ul style="list-style:none; padding:0; text-align:left; margin-top:0.5rem;">
+                            <li style="padding:0.4rem 0;">⚽ Duelo (1v1)</li>
+                            <li style="padding:0.4rem 0;">🤝 Dobles (2v2)</li>
+                            <li style="padding:0.4rem 0;">🏀 Baloncesto</li>
+                            <li style="padding:0.4rem 0;">🏐 Voleibol</li>
+                            <li style="padding:0.4rem 0;">🎯 Modo práctica libre</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <div class="info-box">
+                <h3 style="font-family:'Orbitron',sans-serif; font-size:1.8rem; margin-bottom:1.5rem;">📜 HISTORIA DE ROCKET LEAGUE SIDESWIPE</h3>
+                <div class="timeline">
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4 style="color:var(--accent);">Marzo 2021</h4><p>Psyonix anuncia Rocket League Sideswipe. Se abre registro para beta cerrada en Australia y Nueva Zelanda.</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4 style="color:var(--accent);">Octubre 2021</h4><p>Beta abierta regional. La comunidad explota con contenido y torneos no oficiales.</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4 style="color:var(--accent);">Noviembre 2021</h4><p>Lanzamiento mundial. Millones de descargas. Se introduce el sistema de temporadas competitivas.</p></div></div>
+                    <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><h4 style="color:var(--accent);">2022 - Actualidad</h4><p>Múltiples temporadas, nuevas arenas, vehículos y modos. RLPG se consolida como la principal comunidad hispana.</p></div></div>
+                </div>
+            </div>
+            <div class="stat-counter-grid">
+                <div class="stat-item"><div class="stat-number" data-count="15000">0</div><div class="stat-label">Miembros en Discord</div></div>
+                <div class="stat-item"><div class="stat-number" data-count="500">0</div><div class="stat-label">Torneos Realizados</div></div>
+                <div class="stat-item"><div class="stat-number" data-count="50">0</div><div class="stat-label">Coaches Activos</div></div>
+                <div class="stat-item"><div class="stat-number" data-count="24">0</div><div class="stat-label">Horas de Soporte Diario</div></div>
+            </div>
         </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== NUEVA SECCIÓN: NOTICIAS Y ACTUALIZACIONES ==================== -->
+        <section id="noticias" class="section-darker">
+            <h2 class="section-title">📢 NOTICIAS Y ACTUALIZACIONES</h2>
+            <p class="section-subtitle">Mantente al día con las últimas novedades de Rocket League Sideswipe y de nuestra comunidad.</p>
+            <div class="card-grid">
+                <div class="news-card">
+                    <div class="news-icon">🏆</div>
+                    <h4 class="news-name" style="color:var(--gold);">Torneo Mensual RLPG - Mayo 2026</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">¡Inscripciones abiertas! Torneo 1v1 y 2v2 con premios en efectivo y roles exclusivos. Cupo limitado a 128 jugadores. Fecha: 15 de mayo.</p>
+                    <span style="background:var(--accent); padding:0.2rem 0.8rem; border-radius:15px; font-size:0.75rem;">NUEVO</span>
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">🎮</div>
+                    <h4 class="news-name" style="color:var(--blue-electric);">Nuevo Modo: Voleibol 2v2</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">Psyonix ha lanzado el modo Voleibol 2v2 como parte de la actualización de primavera. La comunidad ya está creando nuevas estrategias. ¡Únete a la discusión en Discord!</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">🛡️</div>
+                    <h4 class="news-name" style="color:var(--green-neon);">Nuevos Moderadores RLPG</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">Damos la bienvenida a 3 nuevos moderadores que reforzarán el equipo de verificación de rangos. Tiempo de respuesta reducido a menos de 4 horas.</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">📱</div>
+                    <h4 class="news-name" style="color:var(--purple-neon);">Optimización para iOS 20</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">Rocket League Sideswipe ahora es totalmente compatible con iOS 20 y la nueva pantalla siempre activa. Rendimiento mejorado en dispositivos recientes.</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">💎</div>
+                    <h4 class="news-name" style="color:var(--diamond);">Nuevo Rango: Diamante Elite</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">Se ha añadido una división intermedia entre Diamante y Campeón. ¿Crees que tienes lo necesario? Verifica tu rango ahora.</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">🎓</div>
+                    <h4 class="news-name" style="color:var(--orange-neon);">Programa de Mentoría RLPG</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">Lanzamos el programa de mentoría donde jugadores Campeón+ entrenan a miembros de menor rango. ¡Apúntate en el canal dedicado!</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <h3 style="font-family:'Orbitron',sans-serif;">📅 PRÓXIMOS EVENTOS</h3>
+                <ul style="list-style:none; padding:0; color:var(--text-secondary);">
+                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🗓️ <strong>10 Mayo:</strong> Torneo relámpago 1v1 (inscripción gratuita)</li>
+                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🗓️ <strong>15 Mayo:</strong> Torneo mensual oficial RLPG</li>
+                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🗓️ <strong>22 Mayo:</strong> Sesión de coaching grupal (tema: Flip Reset avanzado)</li>
+                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">🗓️ <strong>30 Mayo:</strong> Noche de juegos personalizados con la comunidad</li>
+                </ul>
+            </div>
+        </section>
+        <div class="section-divider"></div>
 
         <!-- ==================== SECCIÓN RANGOS ==================== -->
-        <section id="rangos">
+        <section id="rangos" class="section-deep">
             <h2 class="section-title">🏆 RANGOS Y ROLES</h2>
-            
-            <!-- Rangos de habilidad -->
-            <h3 style="text-align:center; font-family:'Orbitron',sans-serif; margin:2rem 0 1rem;">🎖️ RANGOS DE HABILIDAD (BRONCE A GRAN CAMPEÓN)</h3>
+            <p class="section-subtitle">Sistema completo de rangos de habilidad y roles especiales dentro de la comunidad.</p>
+            <h3 style="text-align:center; font-family:'Orbitron',sans-serif; margin:2rem 0 1.5rem; font-size:1.8rem; color:var(--gold);">🎖️ RANGOS DE HABILIDAD</h3>
             <div class="card-grid">
-                <div class="rank-card"><div class="rank-icon">🥉</div><div class="rank-name" style="color:#cd7f32;">BRONCE</div></div>
-                <div class="rank-card"><div class="rank-icon">🥈</div><div class="rank-name" style="color:#c0c0c0;">PLATA</div></div>
-                <div class="rank-card"><div class="rank-icon">🥇</div><div class="rank-name" style="color:#f0b90b;">ORO</div></div>
-                <div class="rank-card"><div class="rank-icon">💠</div><div class="rank-name" style="color:#4dd0e1;">PLATINO</div></div>
-                <div class="rank-card"><div class="rank-icon">💎</div><div class="rank-name" style="color:#b39ddb;">DIAMANTE</div></div>
-                <div class="rank-card"><div class="rank-icon">👑</div><div class="rank-name" style="color:#ff4d2e;">CAMPEÓN</div></div>
-                <div class="rank-card"><div class="rank-icon">🌟</div><div class="rank-name" style="color:#ffd700;">GRAN CAMPEÓN</div></div>
+                <div class="rank-card"><div class="rank-icon">🥉</div><div class="rank-name" style="color:#cd7f32;">BRONCE</div><p style="font-size:0.75rem; color:var(--text-tertiary);">Inicio del viaje</p></div>
+                <div class="rank-card"><div class="rank-icon">🥈</div><div class="rank-name" style="color:#c0c0c0;">PLATA</div><p style="font-size:0.75rem; color:var(--text-tertiary);">Fundamentos sólidos</p></div>
+                <div class="rank-card"><div class="rank-icon">🥇</div><div class="rank-name" style="color:#f0b90b;">ORO</div><p style="font-size:0.75rem; color:var(--text-tertiary);">Buena rotación</p></div>
+                <div class="rank-card"><div class="rank-icon">💠</div><div class="rank-name" style="color:#4dd0e1;">PLATINO</div><p style="font-size:0.75rem; color:var(--text-tertiary);">Mecánicas avanzadas</p></div>
+                <div class="rank-card"><div class="rank-icon">💎</div><div class="rank-name" style="color:#b39ddb;">DIAMANTE</div><p style="font-size:0.75rem; color:var(--text-tertiary);">Consistencia letal</p></div>
+                <div class="rank-card"><div class="rank-icon">👑</div><div class="rank-name" style="color:#ff4d2e;">CAMPEÓN</div><p style="font-size:0.75rem; color:var(--text-tertiary);">Élite competitiva</p></div>
+                <div class="rank-card"><div class="rank-icon">🌟</div><div class="rank-name" style="color:#ffd700;">GRAN CAMPEÓN</div><p style="font-size:0.75rem; color:var(--text-tertiary);">La cima absoluta</p></div>
             </div>
-
-            <!-- Cómo conseguir roles / Funciones especiales -->
             <div class="info-box two-col">
                 <div>
-                    <h3 style="font-family:'Orbitron',sans-serif;">🎓 FUNCIONES ESPECIALES</h3>
-                    <ul style="list-style:none; padding:0; margin-top:1rem;">
-                        <li style="margin-bottom:1rem;">🧠 <strong>COACH:</strong> ¿Diamante o superior y quieres ayudar? Solicita el puesto enviando un mensaje a un moderador.</li>
-                        <li style="margin-bottom:1rem;">🛡️ <strong>VETERANO:</strong> Otorgado a miembros activos por más de 3 meses.</li>
-                        <li style="margin-bottom:1rem;">🏆 <strong>MVP MENSUAL:</strong> Para el jugador destacado del mes.</li>
-                        <li style="margin-bottom:1rem;">⭐ <strong>MEJOR JUGADOR DEL SERVIDOR:</strong> Solo uno. Se obtiene ganando nuestros torneos oficiales 1v1.</li>
+                    <h3 style="font-family:'Orbitron',sans-serif; font-size:1.5rem;">🎓 FUNCIONES ESPECIALES</h3>
+                    <p style="margin:1rem 0;">Roles exclusivos que puedes obtener en el servidor:</p>
+                    <ul style="list-style:none; padding:0;">
+                        <li style="margin-bottom:1.2rem; padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">🧠 <strong>COACH:</strong> Para jugadores Diamante o superior que quieran entrenar a otros. Envía un mensaje a un moderador para tu prueba.</li>
+                        <li style="margin-bottom:1.2rem; padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">🛡️ <strong>VETERANO:</strong> Otorgado automáticamente a miembros con más de 3 meses de actividad constante.</li>
+                        <li style="margin-bottom:1.2rem; padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">🏆 <strong>MVP MENSUAL:</strong> El jugador más destacado del mes, elegido por el staff.</li>
+                        <li style="margin-bottom:1.2rem; padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">⭐ <strong>MEJOR JUGADOR DEL SERVIDOR:</strong> Solo una persona. Se obtiene ganando el torneo oficial 1v1.</li>
                     </ul>
                 </div>
                 <div>
-                    <h3 style="font-family:'Orbitron',sans-serif;">📱 MÉTODO DE ENTRADA</h3>
-                    <p style="margin:1rem 0;">Autoasignación enviando un mensaje a <span class="discord-mention">@875667977402466306</span> con el rol específico:</p>
-                    <p>📱 para jugador táctil</p>
-                    <p>🎮 para jugador con controlador</p>
-                    <h3 style="font-family:'Orbitron',sans-serif; margin-top:1.5rem;">🚀 AYUDANTES DE RANGO</h3>
-                    <p>Busca miembros con el rol <strong>Ayudante de rango ⚡</strong> si necesitas ayuda para subir o quieres ayudar a otros.</p>
+                    <h3 style="font-family:'Orbitron',sans-serif; font-size:1.5rem;">📱 MÉTODO DE ENTRADA</h3>
+                    <p style="margin:1rem 0;">Autoasignación contactando a <span class="discord-mention">@875667977402466306</span>:</p>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <span style="background:rgba(255,255,255,0.05); padding:0.6rem 1.2rem; border-radius:25px;">📱 Jugador Táctil</span>
+                        <span style="background:rgba(255,255,255,0.05); padding:0.6rem 1.2rem; border-radius:25px;">🎮 Jugador con Mando</span>
+                    </div>
+                    <h3 style="font-family:'Orbitron',sans-serif; margin-top:1.8rem; font-size:1.5rem;">🚀 AYUDANTES DE RANGO</h3>
+                    <p>Busca miembros con el rol <strong style="color:var(--orange-neon);">Ayudante de rango ⚡</strong> en la lista de miembros si necesitas ayuda para subir de nivel o quieres ofrecer tu ayuda a otros jugadores.</p>
+                    <div class="success-box">✅ <strong>Consejo:</strong> Los ayudantes de rango son jugadores verificados con alta reputación. Confía en ellos para mejorar.</div>
                 </div>
             </div>
-
-            <!-- Verificación de rango (texto proporcionado con cambio a ticket) -->
             <div class="info-box">
-                <h3 style="font-family:'Orbitron',sans-serif; font-size:1.8rem;">📸 CÓMO VERIFICAR TU RANGO / HOW TO VERIFY YOUR RANK</h3>
-                <p style="margin-bottom:1.5rem;">Para obtener su rol de rango (Bronce, Plata, Oro, Platino, Diamante o superior), debe proporcionar prueba de su habilidad.</p>
+                <h3 style="font-family:'Orbitron',sans-serif; font-size:1.8rem; text-align:center;">📸 CÓMO VERIFICAR TU RANGO / HOW TO VERIFY YOUR RANK</h3>
+                <p style="text-align:center; margin-bottom:2rem; font-size:1.1rem;">Para obtener tu rol de rango (Bronce, Plata, Oro, Platino, Diamante o superior), debes proporcionar prueba de tu habilidad.</p>
                 <ol class="steps-list">
-                    <li>Toma una captura de pantalla de tu perfil del juego donde sea visible tu rango actual.</li>
-                    <li>Envía la foto mediante un <strong>ticket en el canal de soporte</strong> o contacta a <span class="discord-mention">@875667977402466306</span>.</li>
-                    <li>Espera a que un moderador verifique la imagen y asigne tu rol.</li>
+                    <li><strong>Toma una captura de pantalla</strong> de tu perfil del juego donde sea visible tu rango actual en Rocket League Sideswipe.</li>
+                    <li><strong>Envía la foto mediante un ticket en el canal de soporte</strong> del servidor de Discord. También puedes contactar directamente a <span class="discord-mention">@875667977402466306</span>.</li>
+                    <li><strong>Espera a que un moderador verifique</strong> la imagen y asigne tu rol correspondiente. El tiempo medio de respuesta es de 2 a 12 horas.</li>
                 </ol>
-                <div class="warning-box">
-                    ⚠️ Nota: Las capturas de pantalla falsas resultarán en una prohibición inmediata del servidor.
-                </div>
+                <div class="warning-box">⚠️ <strong>Nota importante:</strong> Las capturas de pantalla falsas, editadas o que no correspondan a tu cuenta real resultarán en una <strong>prohibición inmediata y permanente</strong> del servidor. La verificación es manual y detectamos cualquier manipulación.</div>
             </div>
-        </section>
-
-        <!-- ==================== SECCIÓN ESTILOS DE JUEGO ==================== -->
-        <section id="estilos">
-            <h2 class="section-title">🎭 ESTILO DE JUEGO E IDENTIDAD</h2>
             <div class="info-box">
-                <p style="text-align:center; font-size:1.2rem; margin-bottom:2rem;">¡Muéstrales a todos cómo juegas! Para obtener estos roles, abre un <strong>ticket en el canal de soporte</strong> con un pequeño clip de tu juego o simplemente pregunta por el que mejor se adapte a ti.</p>
-                <div class="card-grid">
-                    <div class="style-card"><div class="style-icon">🌪️</div><div class="style-name">FREESTYLER</div><p style="font-size:0.8rem; margin-top:0.5rem;">Regates aéreos, tiros al techo, goles con estilo.</p></div>
-                    <div class="style-card"><div class="style-icon">🎯</div><div class="style-name">DELANTERO</div><p style="font-size:0.8rem; margin-top:0.5rem;">Siempre marca y lidera el ataque.</p></div>
-                    <div class="style-card"><div class="style-icon">🧤</div><div class="style-name">PORTERO</div><p style="font-size:0.8rem; margin-top:0.5rem;">La pared en la red que salva cada tiro.</p></div>
-                    <div class="style-card"><div class="style-icon">🔄</div><div class="style-name">ROTADOR</div><p style="font-size:0.8rem; margin-top:0.5rem;">Táctico, domina posicionamiento y juego en equipo.</p></div>
+                <h3 style="font-family:'Orbitron',sans-serif; font-size:1.6rem; margin-bottom:1.5rem;">📈 CONSEJOS PARA CADA RANGO</h3>
+                <div class="three-col">
+                    <div><h4 style="color:var(--bronze);">🥉 BRONCE - PLATA</h4><ul style="padding-left:1.2rem; color:var(--text-secondary);"><li>Aprende a usar el turbo para defender</li><li>Practica tiros básicos a puerta</li><li>No persigas el balón sin sentido</li><li>Juega partidas de práctica libre</li></ul></div>
+                    <div><h4 style="color:var(--gold);">🥇 ORO - PLATINO</h4><ul style="padding-left:1.2rem; color:var(--text-secondary);"><li>Domina el "flip reset" lateral</li><li>Aprende a rotar con tu compañero</li><li>Controla el balón en el techo</li><li>Empieza a usar el "stall"</li></ul></div>
+                    <div><h4 style="color:var(--diamond);">💎 DIAMANTE - CAMPEÓN+</h4><ul style="padding-left:1.2rem; color:var(--text-secondary);"><li>Perfecciona el "purple shot"</li><li>Lectura avanzada de rebotes</li><li>Comunicación no verbal con compañero</li><li>Participa en torneos regularmente</li></ul></div>
                 </div>
             </div>
         </section>
+        <div class="section-divider"></div>
 
-        <!-- ==================== SECCIÓN UNIRSE ==================== -->
-        <section id="unirse">
-            <h2 class="section-title">🔗 UNIRSE A LA COMUNIDAD</h2>
-            <div class="info-box" style="text-align:center;">
-                <p style="font-size:1.3rem; margin-bottom:2rem;">Únete a nuestro servidor de Discord y forma parte de la élite de Rocket League Sideswipe.</p>
-                <a href="https://discord.gg/2x2w4Zwtb2" target="_blank" class="btn-discord">
-                    <span style="font-size:1.8rem;">🕹️</span> UNIRSE AL SERVIDOR
-                </a>
-                <p style="margin-top:1.5rem; color:var(--text-secondary);">Enlace: <code style="background:#1e1e2a; padding:0.3rem 0.8rem; border-radius:8px;">https://discord.gg/2x2w4Zwtb2</code></p>
-            </div>
-        </section>
-
-        <!-- ==================== SECCIÓN CONTACTO ==================== -->
-        <section id="contacto">
-            <h2 class="section-title">📬 CONTÁCTANOS</h2>
-            <div class="info-box" style="text-align:center;">
-                <p style="font-size:1.2rem;">Por el momento, la única forma de contacto oficial es a través de nuestro <strong>servidor de Discord</strong>.</p>
-                <p style="margin:1rem 0;">Allí podrás hablar con el staff, abrir tickets de soporte y mantenerte al día de todas las novedades.</p>
-                <a href="https://discord.gg/2x2w4Zwtb2" target="_blank" class="btn-discord" style="margin-top:1rem;">
-                    <span>💬</span> IR A DISCORD
-                </a>
-            </div>
-        </section>
-
-        <!-- ==================== SECCIÓN EXTRA: TORNEOS Y CONSEJOS ==================== -->
-        <section id="torneos">
-            <h2 class="section-title">🏅 TORNEOS Y COMPETICIONES</h2>
+        <!-- ==================== NUEVA SECCIÓN: MMR Y EMPAREJAMIENTO ==================== -->
+        <section id="mmr" class="section-special">
+            <h2 class="section-title">📊 MMR Y SISTEMA DE EMPAREJAMIENTO</h2>
+            <p class="section-subtitle">Comprende cómo funciona el Matchmaking Rating (MMR) en Rocket League Sideswipe y cómo afecta tu progreso.</p>
             <div class="info-box two-col">
                 <div>
-                    <h3 style="font-family:'Orbitron',sans-serif;">🏆 TORNEOS OFICIALES</h3>
-                    <p>Organizamos torneos 1v1 y 2v2 periódicos con premios exclusivos. El ganador del torneo 1v1 recibe el rol de <strong>MEJOR JUGADOR DEL SERVIDOR ⭐</strong>. Estate atento a los anuncios en Discord.</p>
+                    <h3 style="font-family:'Orbitron',sans-serif;">🔍 ¿QUÉ ES EL MMR?</h3>
+                    <p style="margin:1rem 0; color:var(--text-secondary);">El MMR (Matchmaking Rating) es una puntuación numérica oculta que determina tu nivel de habilidad real. No es visible directamente en el juego, pero puedes estimarlo con herramientas de terceros. El sistema te empareja con jugadores de MMR similar para garantizar partidas justas.</p>
+                    <ul style="padding-left:1.2rem; color:var(--text-secondary);">
+                        <li>Bronce: 0 - 200 MMR</li>
+                        <li>Plata: 200 - 400 MMR</li>
+                        <li>Oro: 400 - 600 MMR</li>
+                        <li>Platino: 600 - 800 MMR</li>
+                        <li>Diamante: 800 - 1000 MMR</li>
+                        <li>Campeón: 1000 - 1200 MMR</li>
+                        <li>Gran Campeón: 1200+ MMR</li>
+                    </ul>
                 </div>
                 <div>
-                    <h3 style="font-family:'Orbitron',sans-serif;">📈 CONSEJOS PARA MEJORAR</h3>
-                    <p>Practica el control del balón en el techo, domina los "flip resets" laterales y comunícate con tu compañero. ¿Necesitas ayuda? Busca un <strong>Coach 🧠</strong> o un <strong>Ayudante de rango ⚡</strong> en el servidor.</p>
+                    <h3 style="font-family:'Orbitron',sans-serif;">📈 ¿CÓMO SUBIR TU MMR?</h3>
+                    <p style="margin:1rem 0; color:var(--text-secondary);">Cada victoria te otorga entre 8 y 15 puntos de MMR, mientras que una derrota te resta una cantidad similar. La cantidad exacta depende de la diferencia de MMR entre tú y tu oponente. Derrotar a alguien con mayor MMR te dará más puntos. Perder contra alguien con menor MMR te penalizará más.</p>
+                    <div class="info-mini-box">💡 <strong>Consejo pro:</strong> Juega en horas de menor tráfico para encontrar oponentes con MMR más alto y acelerar tu progreso.</div>
+                    <div class="warning-box" style="margin-top:1rem;">⚠️ El "boosting" (dejar que alguien juegue en tu cuenta) está prohibido y puede resultar en la expulsión del servidor y reporte a Psyonix.</div>
+                </div>
+            </div>
+            <div class="info-box">
+                <h3 style="font-family:'Orbitron',sans-serif;">🔄 RESET DE TEMPORADA</h3>
+                <p style="color:var(--text-secondary);">Al final de cada temporada (aproximadamente cada 3-4 meses), el MMR de todos los jugadores se ajusta parcialmente hacia la media (soft reset). Esto significa que perderás algunos puntos, pero mantendrás gran parte de tu progreso. Es el momento perfecto para volver a verificar tu rango en RLPG.</p>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN ESTILOS DE JUEGO ==================== -->
+        <section id="estilos" class="section-alt">
+            <h2 class="section-title">🎭 ESTILO DE JUEGO E IDENTIDAD</h2>
+            <p class="section-subtitle">Define tu forma de jugar y obtén el rol que mejor te represente en la comunidad.</p>
+            <div class="info-box" style="text-align:center;">
+                <p style="font-size:1.2rem; margin-bottom:2rem;">¡Muéstrales a todos cómo juegas! Para obtener estos roles, <strong>abre un ticket en el canal de soporte</strong> con un pequeño clip de tu juego (15-30 segundos) o simplemente solicita el rol que mejor se adapte a tu estilo.</p>
+                <div class="card-grid">
+                    <div class="style-card"><div class="style-icon">🌪️</div><div class="style-name" style="color:var(--purple-neon);">FREESTYLER</div><p style="font-size:0.85rem; margin-top:0.8rem; color:var(--text-secondary);">Vives para los regates aéreos, tiros al techo, y goles con estilo imposible.</p></div>
+                    <div class="style-card"><div class="style-icon">🎯</div><div class="style-name" style="color:var(--accent);">DELANTERO</div><p style="font-size:0.85rem; margin-top:0.8rem; color:var(--text-secondary);">Eres el que siempre marca. Lideras el ataque con precisión quirúrgica.</p></div>
+                    <div class="style-card"><div class="style-icon">🧤</div><div class="style-name" style="color:var(--blue-electric);">PORTERO</div><p style="font-size:0.85rem; margin-top:0.8rem; color:var(--text-secondary);">La muralla infranqueable. Salvas cada tiro imposible.</p></div>
+                    <div class="style-card"><div class="style-icon">🔄</div><div class="style-name" style="color:var(--green-neon);">ROTADOR</div><p style="font-size:0.85rem; margin-top:0.8rem; color:var(--text-secondary);">Maestro táctico del posicionamiento y la rotación.</p></div>
+                    <div class="style-card"><div class="style-icon">⚡</div><div class="style-name" style="color:var(--orange-neon);">HÍBRIDO</div><p style="font-size:0.85rem; margin-top:0.8rem; color:var(--text-secondary);">Te adaptas a cualquier situación del partido.</p></div>
+                </div>
+                <div class="success-box" style="text-align:left;">💡 <strong>Dato curioso:</strong> Los jugadores con rol <strong>Freestyler</strong> suelen ser los más buscados para clips destacados en nuestro canal de mejores jugadas.</div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== NUEVA SECCIÓN: GUÍA DE ENTRENAMIENTO DIARIO ==================== -->
+        <section id="entrenamiento" class="section-neon">
+            <h2 class="section-title">📋 GUÍA DE ENTRENAMIENTO DIARIO</h2>
+            <p class="section-subtitle">Rutinas diseñadas por coaches profesionales de RLPG para mejorar tu habilidad mecánica y táctica.</p>
+            <div class="card-grid">
+                <div class="training-card">
+                    <div class="training-icon">🌅</div>
+                    <h4 class="training-name" style="color:var(--accent);">Rutina Matutina (15 min)</h4>
+                    <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>5 min de práctica libre (tiros a puerta)</li>
+                        <li>5 min de stall y control aéreo</li>
+                        <li>5 min de shadow defense contra IA</li>
+                    </ul>
+                </div>
+                <div class="training-card">
+                    <div class="training-icon">🔥</div>
+                    <h4 class="training-name" style="color:var(--gold);">Rutina de Mecánicas (30 min)</h4>
+                    <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>10 min de flip resets laterales</li>
+                        <li>10 min de purple shots desde varios ángulos</li>
+                        <li>10 min de ceiling pinches</li>
+                    </ul>
+                </div>
+                <div class="training-card">
+                    <div class="training-icon">🧠</div>
+                    <h4 class="training-name" style="color:var(--blue-electric);">Rutina Táctica (20 min)</h4>
+                    <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>Ver repeticiones de partidas propias</li>
+                        <li>Analizar posicionamiento en cada gol recibido</li>
+                        <li>Practicar rotaciones con un compañero</li>
+                    </ul>
+                </div>
+                <div class="training-card">
+                    <div class="training-icon">🌙</div>
+                    <h4 class="training-name" style="color:var(--purple-neon);">Rutina Nocturna (10 min)</h4>
+                    <ul style="padding-left:1.2rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>Jugar 3 partidas sin presión</li>
+                        <li>Probar nuevas configuraciones de cámara</li>
+                        <li>Revisar clips del día y guardar los mejores</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <h3 style="font-family:'Orbitron',sans-serif;">🎯 PLAN SEMANAL DE MEJORA</h3>
+                <table class="glossary-table">
+                    <tr><th>Día</th><th>Enfoque</th><th>Duración</th></tr>
+                    <tr><td>Lunes</td><td>Mecánicas básicas + partidas clasificatorias</td><td>45 min</td></tr>
+                    <tr><td>Martes</td><td>Flip resets y stalls</td><td>30 min</td></tr>
+                    <tr><td>Miércoles</td><td>Estrategia 2v2 + revisión de repeticiones</td><td>40 min</td></tr>
+                    <tr><td>Jueves</td><td>Tiros potentes (purple/red shots)</td><td>35 min</td></tr>
+                    <tr><td>Viernes</td><td>Partidas libres con miembros de RLPG</td><td>60 min</td></tr>
+                    <tr><td>Sábado</td><td>Torneo o partidas competitivas intensas</td><td>90 min</td></tr>
+                    <tr><td>Domingo</td><td>Descanso activo (ver streams, analizar pros)</td><td>30 min</td></tr>
+                </table>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN MECÁNICAS AVANZADAS ==================== -->
+        <section id="mecanicas" class="section-accent">
+            <h2 class="section-title">🔧 MECÁNICAS AVANZADAS</h2>
+            <p class="section-subtitle">Domina las técnicas más poderosas de Rocket League Sideswipe.</p>
+            <div class="card-grid">
+                <div class="mechanic-card"><div class="mechanic-icon">🔄</div><h4 class="mechanic-name" style="color:var(--accent);">FLIP RESET LATERAL</h4><p>Tocar el balón con las cuatro ruedas en el aire para resetear el salto. En Sideswipe se ejecuta girando el coche 90°.</p><p style="font-size:0.8rem; color:var(--text-tertiary);">Dificultad: ★★★★☆</p></div>
+                <div class="mechanic-card"><div class="mechanic-icon">⏸️</div><h4 class="mechanic-name" style="color:var(--gold);">STALL (PARADA AÉREA)</h4><p>Mantener el coche suspendido en el aire sin caer, usando toques sutiles del turbo.</p><p style="font-size:0.8rem; color:var(--text-tertiary);">Dificultad: ★★★☆☆</p></div>
+                <div class="mechanic-card"><div class="mechanic-icon">🟣</div><h4 class="mechanic-name" style="color:var(--purple-neon);">PURPLE SHOT</h4><p>El tiro más potente. Salto + turbo + ángulo 45° en el momento del impacto. Efecto púrpura.</p><p style="font-size:0.8rem; color:var(--text-tertiary);">Dificultad: ★★★★★</p></div>
+                <div class="mechanic-card"><div class="mechanic-icon">🔴</div><h4 class="mechanic-name" style="color:var(--accent);">RED SHOT</h4><p>Tiro potente de color rojo con salto simple y turbo. Ideal para tiros rápidos.</p><p style="font-size:0.8rem; color:var(--text-tertiary);">Dificultad: ★★★☆☆</p></div>
+                <div class="mechanic-card"><div class="mechanic-icon">🪝</div><h4 class="mechanic-name" style="color:var(--blue-electric);">CEILING PINCH</h4><p>Aprisionar el balón contra el techo para lanzarlo a velocidad máxima.</p><p style="font-size:0.8rem; color:var(--text-tertiary);">Dificultad: ★★★★☆</p></div>
+                <div class="mechanic-card"><div class="mechanic-icon">🌀</div><h4 class="mechanic-name" style="color:var(--green-neon);">WAVE DASH LATERAL</h4><p>Ganar velocidad instantánea al aterrizar inclinando el coche y usando el salto justo antes de tocar el suelo.</p><p style="font-size:0.8rem; color:var(--text-tertiary);">Dificultad: ★★☆☆☆</p></div>
+            </div>
+            <div class="info-box"><h3 style="font-family:'Orbitron',sans-serif;">🎓 ¿CÓMO PRACTICAR MECÁNICAS?</h3><p>El modo <strong>Práctica Libre</strong> es tu mejor aliado. Dedica al menos 15 minutos diarios. Configura los controles a tu gusto y no temas fallar. Solicita un <strong>Coach 🧠</strong> en Discord para entrenamiento personalizado.</p></div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN ARENAS ==================== -->
+        <section id="arenas" class="section-dark">
+            <h2 class="section-title">🏟️ ARENAS DE JUEGO</h2>
+            <p class="section-subtitle">Cada arena tiene características únicas. Conócelas todas.</p>
+            <div class="card-grid">
+                <div class="arena-card"><div class="arena-icon">🏟️</div><h4 class="arena-name">DFH STADIUM</h4><p style="font-size:0.85rem; color:var(--text-secondary);">Arena clásica. Techo plano ideal para ceiling pinches.</p></div>
+                <div class="arena-card"><div class="arena-icon">🌆</div><h4 class="arena-name">NEO TOKYO</h4><p style="font-size:0.85rem; color:var(--text-secondary);">Bordes elevados que permiten jugadas aéreas únicas.</p></div>
+                <div class="arena-card"><div class="arena-icon">🏜️</div><h4 class="arena-name">ARENA DESÉRTICA</h4><p style="font-size:0.85rem; color:var(--text-secondary);">Superficie ligeramente irregular que afecta el bote del balón.</p></div>
+                <div class="arena-card"><div class="arena-icon">❄️</div><h4 class="arena-name">ESTADIO DE HIELO</h4><p style="font-size:0.85rem; color:var(--text-secondary);">Superficie resbaladiza que reduce la fricción.</p></div>
+                <div class="arena-card"><div class="arena-icon">🌌</div><h4 class="arena-name">ESPACIO EXTERIOR</h4><p style="font-size:0.85rem; color:var(--text-secondary);">Gravedad reducida. Ideal para freestylers.</p></div>
+                <div class="arena-card"><div class="arena-icon">🏀</div><h4 class="arena-name">CANCHA DE BALONCESTO</h4><p style="font-size:0.85rem; color:var(--text-secondary);">Exclusiva para modo Baloncesto.</p></div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN VEHÍCULOS ==================== -->
+        <section id="vehiculos" class="section-darker">
+            <h2 class="section-title">🚗 VEHÍCULOS Y PERSONALIZACIÓN</h2>
+            <p class="section-subtitle">Cada vehículo tiene un hitbox único. Elige el que mejor se adapte a tu estilo.</p>
+            <div class="card-grid">
+                <div class="vehicle-card"><div class="vehicle-icon">🚙</div><h4 class="vehicle-name">OCTANE</h4><p style="font-size:0.8rem; color:var(--text-secondary);">Hitbox rectangular estándar. El más equilibrado.</p></div>
+                <div class="vehicle-card"><div class="vehicle-icon">🏎️</div><h4 class="vehicle-name">DOMINUS</h4><p style="font-size:0.8rem; color:var(--text-secondary);">Hitbox plano y alargado. Favorito de freestylers.</p></div>
+                <div class="vehicle-card"><div class="vehicle-icon">🚐</div><h4 class="vehicle-name">MERC</h4><p style="font-size:0.8rem; color:var(--text-secondary);">Hitbox alto y ancho. Perfecto para porteros.</p></div>
+                <div class="vehicle-card"><div class="vehicle-icon">🚗</div><h4 class="vehicle-name">BREAKOUT</h4><p style="font-size:0.8rem; color:var(--text-secondary);">Hitbox plano similar a Dominus.</p></div>
+                <div class="vehicle-card"><div class="vehicle-icon">🛻</div><h4 class="vehicle-name">FENNEC</h4><p style="font-size:0.8rem; color:var(--text-secondary);">Hitbox Octane. Precisión visual excelente.</p></div>
+                <div class="vehicle-card"><div class="vehicle-icon">🚀</div><h4 class="vehicle-name">BATMOBILE</h4><p style="font-size:0.8rem; color:var(--text-secondary);">Hitbox muy plano y ancho. Pinch shots letales.</p></div>
+            </div>
+            <div class="info-box"><h3 style="font-family:'Orbitron',sans-serif;">🎨 PERSONALIZACIÓN</h3><p>Personaliza tu vehículo con calcomanías, colores, ruedas y estelas de turbo. Aunque no afectan al rendimiento, un coche con estilo intimida psicológicamente a los rivales.</p></div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN ESTRATEGIAS ==================== -->
+        <section id="estrategias" class="section-deep">
+            <h2 class="section-title">🧠 ESTRATEGIAS Y TÁCTICAS</h2>
+            <p class="section-subtitle">El conocimiento táctico es tan importante como la habilidad mecánica.</p>
+            <div class="info-box two-col">
+                <div><h3 style="font-family:'Orbitron',sans-serif; font-size:1.4rem;">⚔️ ESTRATEGIA 1v1</h3><ul style="padding-left:1.2rem; color:var(--text-secondary);"><li>Controla el ritmo del partido.</li><li>Usa "shadow defense" para anticipar tiros.</li><li>Provoca errores con cambios de velocidad.</li><li>El kickoff es crucial: practica variantes.</li><li>Administra el turbo sabiamente.</li></ul></div>
+                <div><h3 style="font-family:'Orbitron',sans-serif; font-size:1.4rem;">🤝 ESTRATEGIA 2v2</h3><ul style="padding-left:1.2rem; color:var(--text-secondary);"><li>Comunicación constante con tu compañero.</li><li>Rotación clásica: uno ataca, otro defiende.</li><li>No os amontonéis en la misma zona.</li><li>El pase es más efectivo que el tiro individual.</li><li>Cubrid la portería en saques de esquina rivales.</li></ul></div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN CONFIGURACIÓN ==================== -->
+        <section id="configuracion" class="section-alt">
+            <h2 class="section-title">⚙️ CONFIGURACIÓN ÓPTIMA</h2>
+            <p class="section-subtitle">La configuración de controles puede marcar la diferencia.</p>
+            <div class="info-box two-col">
+                <div><h3 style="font-family:'Orbitron',sans-serif;">📱 CONTROLES TÁCTILES</h3><table class="glossary-table"><tr><th>Acción</th><th>Configuración</th></tr><tr><td>Saltar</td><td>Botón dedicado (derecha)</td></tr><tr><td>Turbo</td><td>Botón dedicado (izquierda)</td></tr><tr><td>Sensibilidad</td><td>Media-Alta (7-8/10)</td></tr><tr><td>Zona muerta</td><td>0.05 - 0.10</td></tr></table></div>
+                <div><h3 style="font-family:'Orbitron',sans-serif;">🎮 CONTROLES CON MANDO</h3><table class="glossary-table"><tr><th>Acción</th><th>Botón</th></tr><tr><td>Saltar</td><td>A (X en PS)</td></tr><tr><td>Turbo</td><td>RB / R1</td></tr><tr><td>Giro aéreo</td><td>Joystick derecho</td></tr><tr><td>Powerslide</td><td>LB / L1</td></tr></table></div>
+            </div>
+            <div class="info-mini-box">💡 <strong>Consejo pro:</strong> Desactiva la "asistencia de vuelo" si quieres control total sobre tus movimientos aéreos. Los jugadores de élite juegan sin asistencias.</div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN GLOSARIO ==================== -->
+        <section id="glosario" class="section-neon">
+            <h2 class="section-title">📚 GLOSARIO DE TÉRMINOS</h2>
+            <p class="section-subtitle">Domina el lenguaje de la comunidad.</p>
+            <div class="info-box">
+                <table class="glossary-table">
+                    <tr><th>Término</th><th>Definición</th></tr>
+                    <tr><td>Flip Reset</td><td>Resetear el salto tocando el balón con las ruedas en el aire.</td></tr>
+                    <tr><td>Stall</td><td>Mantener el coche suspendido en el aire usando toques de turbo.</td></tr>
+                    <tr><td>Purple Shot</td><td>El tiro más potente, con efecto púrpura.</td></tr>
+                    <tr><td>Red Shot</td><td>Tiro potente de color rojo.</td></tr>
+                    <tr><td>Pinch</td><td>Comprimir el balón contra una superficie.</td></tr>
+                    <tr><td>Wave Dash</td><td>Ganar velocidad al aterrizar usando el salto.</td></tr>
+                    <tr><td>Shadow Defense</td><td>Defensa en sombra: posicionarse entre el balón y la portería.</td></tr>
+                    <tr><td>Rotación</td><td>Sistema de posicionamiento en equipo.</td></tr>
+                    <tr><td>Boost Management</td><td>Administración eficiente del turbo.</td></tr>
+                    <tr><td>Hitbox</td><td>Forma invisible del vehículo.</td></tr>
+                    <tr><td>Kickoff</td><td>Saque inicial.</td></tr>
+                    <tr><td>Ceiling Shot</td><td>Tiro desde el techo.</td></tr>
+                    <tr><td>Ball Chaser</td><td>Jugador que persigue el balón sin estrategia.</td></tr>
+                    <tr><td>50/50</td><td>Choque entre dos jugadores disputando el balón.</td></tr>
+                    <tr><td>MMR</td><td>Matchmaking Rating, puntuación oculta de habilidad.</td></tr>
+                    <tr><td>Soft Reset</td><td>Ajuste parcial de MMR al final de temporada.</td></tr>
+                </table>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== NUEVA SECCIÓN: SISTEMA DE REPUTACIÓN ==================== -->
+        <section id="reputacion" class="section-special">
+            <h2 class="section-title">🎖️ SISTEMA DE REPUTACIÓN Y CONFIANZA</h2>
+            <p class="section-subtitle">Nuestra comunidad valora la integridad. Conoce cómo ganar insignias de confianza y evitar sanciones.</p>
+            <div class="info-box two-col">
+                <div>
+                    <h3 style="font-family:'Orbitron',sans-serif;">🛡️ NIVELES DE CONFIANZA</h3>
+                    <ul style="list-style:none; padding:0; color:var(--text-secondary);">
+                        <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🟢 <strong>Verificado:</strong> Rol asignado tras verificar rango con captura legítima.</li>
+                        <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🔵 <strong>Ayudante de Rango:</strong> Jugador de confianza que ayuda a otros a subir.</li>
+                        <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🟣 <strong>Veterano:</strong> Más de 3 meses activo. Historial limpio.</li>
+                        <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">⭐ <strong>Leyenda:</strong> Reconocimiento por contribuciones excepcionales a la comunidad.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-family:'Orbitron',sans-serif;">🚫 SISTEMA DE ADVERTENCIAS</h3>
+                    <p style="color:var(--text-secondary);">Las infracciones se acumulan:</p>
+                    <ul style="padding-left:1.2rem; color:var(--text-secondary);">
+                        <li>1ª advertencia: aviso verbal del moderador.</li>
+                        <li>2ª advertencia: restricción temporal de canales.</li>
+                        <li>3ª advertencia: expulsión temporal (7 días).</li>
+                        <li>4ª advertencia: expulsión permanente.</li>
+                    </ul>
+                    <div class="warning-box">⚠️ Las faltas graves (capturas falsas, acoso, boosting pagado) conllevan expulsión inmediata sin advertencias previas.</div>
                 </div>
             </div>
         </section>
+        <div class="section-divider"></div>
 
+        <!-- ==================== NUEVA SECCIÓN: CLIPS DESTACADOS ==================== -->
+        <section id="clips" class="section-extra">
+            <h2 class="section-title">🎥 CLIPS DESTACADOS Y MURO DE LA FAMA</h2>
+            <p class="section-subtitle">Comparte tus mejores jugadas y gana reconocimiento en la comunidad.</p>
+            <div class="info-box">
+                <h3 style="font-family:'Orbitron',sans-serif;">🏆 ¿CÓMO ENVIAR TU CLIP?</h3>
+                <ol class="steps-list">
+                    <li>Graba un clip de 15-30 segundos mostrando tu mejor jugada en Rocket League Sideswipe.</li>
+                    <li>Súbelo al canal <strong>#clips-destacados</strong> en Discord o abre un ticket en el canal de soporte.</li>
+                    <li>Los clips más votados por la comunidad aparecerán en el <strong>Muro de la Fama</strong> semanal.</li>
+                </ol>
+                <div class="success-box">🏅 El clip más votado del mes otorga el rol temporal <strong>"Jugador del Mes"</strong> y aparece destacado en este sitio web.</div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== NUEVA SECCIÓN: HERRAMIENTAS Y RECURSOS ==================== -->
+        <section id="herramientas" class="section-accent">
+            <h2 class="section-title">🔧 HERRAMIENTAS Y RECURSOS ÚTILES</h2>
+            <p class="section-subtitle">Software y sitios web recomendados por la comunidad RLPG para mejorar tu experiencia.</p>
+            <div class="card-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h4 class="tool-name" style="color:var(--accent);">Calculadora de MMR</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary);">Estima tu MMR actual basado en tu historial de partidas recientes.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🎥</div>
+                    <h4 class="tool-name" style="color:var(--gold);">Grabador de Pantalla</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary);">Recomendamos Mobizen o la grabadora nativa de iOS/Android para tus clips.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h4 class="tool-name" style="color:var(--blue-electric);">Plantilla de Entrenamiento</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary);">Descarga nuestra plantilla Excel para registrar tus estadísticas y progreso.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🕹️</div>
+                    <h4 class="tool-name" style="color:var(--green-neon);">Overlay para Streams</h4>
+                    <p style="font-size:0.85rem; color:var(--text-secondary);">Overlay gratuito con diseño RLPG para tus directos de Sideswipe.</p>
+                </div>
+            </div>
+            <div class="info-box"><p style="text-align:center; color:var(--text-secondary);">Todos estos recursos están disponibles en los canales de <strong>#recursos</strong> de nuestro servidor Discord.</p></div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== NUEVA SECCIÓN: TESTIMONIOS ==================== -->
+        <section id="testimonios" class="section-dark">
+            <h2 class="section-title">💬 TESTIMONIOS DE LA COMUNIDAD</h2>
+            <p class="section-subtitle">Lo que dicen nuestros miembros sobre RLPG.</p>
+            <div class="card-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">🗣️</div>
+                    <p style="font-style:italic; color:var(--text-secondary);">"Gracias a RLPG pasé de Oro a Diamante en 2 meses. Los coaches son increíbles y la comunidad es muy solidaria."</p>
+                    <p style="font-weight:700; margin-top:1rem;">— <span style="color:var(--accent);">RocketMaster99</span> (Diamante II)</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">🗣️</div>
+                    <p style="font-style:italic; color:var(--text-secondary);">"El torneo mensual fue la experiencia más intensa que he tenido. Ganar el rol de Mejor Jugador del Servidor fue un sueño."</p>
+                    <p style="font-weight:700; margin-top:1rem;">— <span style="color:var(--accent);">AerialQueen</span> (Campeona I)</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">🗣️</div>
+                    <p style="font-style:italic; color:var(--text-secondary);">"Al principio era escéptico, pero el sistema de verificación de rangos le da mucha seriedad. Ahora siempre encuentro compañeros de mi nivel."</p>
+                    <p style="font-weight:700; margin-top:1rem;">— <span style="color:var(--accent);">TurboDiego</span> (Platino III)</p>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN UNIRSE ==================== -->
+        <section id="unirse" class="section-alt" style="text-align:center;">
+            <h2 class="section-title">🔗 UNIRSE A LA COMUNIDAD</h2>
+            <p class="section-subtitle">Forma parte de la familia RLPG y compite con los mejores jugadores de Rocket League Sideswipe.</p>
+            <div class="info-box" style="max-width:700px; margin:0 auto;">
+                <span style="font-size:6rem; display:block;">🕹️</span>
+                <p style="font-size:1.4rem; margin:1.5rem 0; font-weight:600;">¡Te esperamos en Discord!</p>
+                <p style="margin-bottom:2rem; color:var(--text-secondary);">Accede a torneos exclusivos, busca compañeros, recibe coaching gratuito y verifica tu rango.</p>
+                <a href="https://discord.gg/2x2w4Zwtb2" target="_blank" rel="noopener noreferrer" class="btn-discord" style="font-size:1.3rem; padding:1.3rem 3.5rem;"><span>🕹️</span> UNIRSE AL SERVIDOR</a>
+                <p style="margin-top:1.8rem; color:var(--text-tertiary);">Enlace directo: <code style="background:#1e1e30; padding:0.4rem 1.2rem; border-radius:10px; font-size:0.9rem;">https://discord.gg/2x2w4Zwtb2</code></p>
+                <div class="success-box" style="text-align:left; margin-top:2rem;">🎉 <strong>¡Bono de bienvenida!</strong> Los nuevos miembros que verifiquen su rango durante la primera semana reciben un rol exclusivo temporal de <strong>"Novato Prometedor"</strong>.</div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN CONTACTO ==================== -->
+        <section id="contacto" class="section-accent" style="text-align:center;">
+            <h2 class="section-title">📬 CONTÁCTANOS</h2>
+            <p class="section-subtitle">Estamos aquí para ayudarte.</p>
+            <div class="info-box" style="max-width:600px; margin:0 auto;">
+                <span style="font-size:4rem;">📬</span>
+                <p style="font-size:1.2rem; margin:1rem 0;">Por el momento, la <strong>única forma de contacto oficial</strong> es a través de nuestro servidor de Discord.</p>
+                <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Allí encontrarás al equipo de staff, moderadores, y podrás abrir tickets de soporte para cualquier consulta.</p>
+                <a href="https://discord.gg/2x2w4Zwtb2" target="_blank" rel="noopener noreferrer" class="btn-discord"><span>💬</span> IR A DISCORD</a>
+                <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--text-tertiary);">Tiempo medio de respuesta: 2-6 horas. Staff disponible de 10:00 a 02:00 (UTC-3).</p>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN FAQ ==================== -->
+        <section id="faq" class="section-dark">
+            <h2 class="section-title">❓ PREGUNTAS FRECUENTES (FAQ)</h2>
+            <div class="info-box">
+                <div class="two-col">
+                    <div>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Cómo verifico mi rango?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">Envía una captura de tu perfil de Sideswipe mediante un ticket en el canal de soporte de Discord. Un moderador verificará y asignará tu rol.</p>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Es obligatorio verificar el rango?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">No es obligatorio, pero sin verificación no podrás acceder a canales de búsqueda de compañeros ni a torneos exclusivos.</p>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Puedo ser baneado por capturas falsas?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">Sí. Las capturas falsas resultan en prohibición inmediata y permanente.</p>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Cómo me convierto en Coach?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">Debes ser rango Diamante o superior y contactar a un moderador para iniciar tu proceso de prueba.</p>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Hay requisitos de edad?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">Recomendamos tener al menos 13 años, en cumplimiento con las normas de Discord.</p>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Organizan torneos regularmente?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">Sí. Torneos mensuales 1v1 y 2v2, además de eventos especiales.</p>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Qué es el MMR?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">El Matchmaking Rating es una puntuación oculta que determina tu nivel y el emparejamiento.</p>
+                        <h4 style="color:var(--accent); font-family:'Orbitron',sans-serif;">¿Cómo denuncio a un jugador tóxico?</h4><p style="color:var(--text-secondary); margin-bottom:1.5rem;">Abre un ticket en el canal de soporte con pruebas (capturas o clips). El staff tomará medidas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <!-- ==================== SECCIÓN CÓDIGO DE CONDUCTA ==================== -->
+        <section id="conducta" class="section-darker">
+            <h2 class="section-title">📜 CÓDIGO DE CONDUCTA</h2>
+            <div class="info-box">
+                <p style="font-size:1.1rem; margin-bottom:1.5rem;">En <strong>ROCKET LEAGUE PROFESSIONAL GROUP</strong> nos tomamos muy en serio el respeto y la deportividad.</p>
+                <ol style="padding-left:1.5rem; color:var(--text-secondary); line-height:2.2;">
+                    <li>Respeta a todos los miembros. No se tolera acoso, insultos, ni discriminación.</li>
+                    <li>No compartas información falsa ni estafes a otros jugadores.</li>
+                    <li>Las capturas para verificación deben ser legítimas. El fraude conlleva expulsión.</li>
+                    <li>Usa los canales adecuados. No hagas spam.</li>
+                    <li>Está prohibido el "boosting" pagado. Los ayudantes de rango lo hacen voluntariamente.</li>
+                    <li>Sigue las indicaciones del staff y moderadores en todo momento.</li>
+                    <li>¡Diviértete y ayuda a crear un ambiente positivo!</li>
+                </ol>
+                <div class="warning-box">⚠️ El incumplimiento de estas normas puede resultar en sanciones desde advertencias hasta la expulsión permanente del servidor.</div>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
         <div class="footer">
-            © 2026 ROCKET LEAGUE PROFESSIONAL GROUP · RL Sideswipe Elite · Comunidad no afiliada a Psyonix o Epic Games. <br>Diseñado para la excelencia competitiva en Sideswipe.
+            <p>© 2026 <strong>ROCKET LEAGUE PROFESSIONAL GROUP</strong> · RL Sideswipe Elite</p>
+            <p style="margin:0.5rem 0;">Comunidad no afiliada oficialmente a Psyonix, Epic Games o sus subsidiarias.</p>
+            <p style="color:var(--text-tertiary);">Diseñado con pasión por la comunidad competitiva de Rocket League Sideswipe. La excelencia es nuestro estándar.</p>
+            <p style="margin-top:1rem;">
+                <a href="#inicio">Inicio</a> · 
+                <a href="#informacion">Información</a> · 
+                <a href="#rangos">Rangos</a> · 
+                <a href="#unirse">Unirse</a> · 
+                <a href="#contacto">Contacto</a>
+            </p>
         </div>
     </div>
 
     <script>
         (function() {
-            // Cursor trail effect
             const trail = document.getElementById('cursorTrail');
             let mouseX = 0, mouseY = 0;
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                trail.style.left = mouseX + 'px';
-                trail.style.top = mouseY + 'px';
-                trail.style.opacity = '0.8';
-            });
-            document.addEventListener('mouseleave', () => {
-                trail.style.opacity = '0';
-            });
-
-            // Particles Canvas
-            const canvas = document.getElementById('particles-canvas');
-            const ctx = canvas.getContext('2d');
-            let width, height;
-            let particles = [];
-
-            function resizeCanvas() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
+            let trailX = 0, trailY = 0;
+            document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+            function updateTrail() {
+                trailX += (mouseX - trailX) * 0.3;
+                trailY += (mouseY - trailY) * 0.3;
+                trail.style.left = trailX + 'px';
+                trail.style.top = trailY + 'px';
+                trail.style.opacity = '0.7';
+                requestAnimationFrame(updateTrail);
             }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
+            updateTrail();
+            document.addEventListener('mouseleave', () => { trail.style.opacity = '0'; });
+            document.addEventListener('mouseenter', () => { trail.style.opacity = '0.7'; });
 
-            class Particle {
-                constructor() {
-                    this.reset();
-                }
+            const canvas1 = document.getElementById('particles-canvas');
+            const ctx1 = canvas1.getContext('2d');
+            let w1, h1;
+            let particles1 = [];
+            function resizeCanvas1() { w1 = window.innerWidth; h1 = window.innerHeight; canvas1.width = w1; canvas1.height = h1; }
+            window.addEventListener('resize', () => { resizeCanvas1(); resizeCanvas2(); });
+            resizeCanvas1();
+            class Particle1 {
+                constructor() { this.reset(); }
                 reset() {
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    this.size = Math.random() * 2.2 + 0.8;
-                    this.speedX = (Math.random() - 0.5) * 0.5;
-                    this.speedY = (Math.random() - 0.5) * 0.5;
-                    this.life = Math.random() * 200 + 80;
-                    this.maxLife = this.life;
+                    this.x = Math.random() * w1; this.y = Math.random() * h1;
+                    this.size = Math.random() * 2.5 + 0.6;
+                    this.speedX = (Math.random() - 0.5) * 0.45; this.speedY = (Math.random() - 0.5) * 0.45;
+                    this.life = Math.random() * 250 + 100; this.maxLife = this.life; this.opacity = Math.random() * 0.7 + 0.3;
                 }
                 update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    this.life--;
-                    if (this.life <= 0 || this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
-                        this.reset();
-                        this.x = Math.random() * width;
-                        this.y = Math.random() * height;
-                        this.life = this.maxLife;
-                    }
+                    this.x += this.speedX; this.y += this.speedY; this.life--;
+                    if (this.life <= 0 || this.x < -10 || this.x > w1 + 10 || this.y < -10 || this.y > h1 + 10) { this.reset(); this.x = Math.random() * w1; this.y = Math.random() * h1; this.life = this.maxLife; }
                 }
-                draw(ctx) {
-                    const opacity = Math.min(1, this.life / this.maxLife) * 0.6;
-                    ctx.fillStyle = `rgba(255, 100, 50, ${opacity})`;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
+                draw(ctx) { const alpha = Math.min(1, this.life / this.maxLife) * this.opacity * 0.5; ctx.fillStyle = `rgba(255, 100, 50, ${alpha})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+            }
+            for (let i = 0; i < 100; i++) particles1.push(new Particle1());
+            function animate1() { ctx1.clearRect(0, 0, w1, h1); for (let p of particles1) { p.update(); p.draw(ctx1); } requestAnimationFrame(animate1); }
+            animate1();
+
+            const canvas2 = document.getElementById('particles-canvas2');
+            const ctx2 = canvas2.getContext('2d');
+            let w2, h2;
+            let particles2 = [];
+            function resizeCanvas2() { w2 = window.innerWidth; h2 = window.innerHeight; canvas2.width = w2; canvas2.height = h2; }
+            resizeCanvas2();
+            class Particle2 {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * w2; this.y = Math.random() * h2;
+                    this.size = Math.random() * 1.8 + 0.4;
+                    this.speedX = (Math.random() - 0.5) * 0.3; this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.life = Math.random() * 350 + 150; this.maxLife = this.life;
                 }
+                update() { this.x += this.speedX; this.y += this.speedY; this.life--; if (this.life <= 0 || this.x < -10 || this.x > w2 + 10 || this.y < -10 || this.y > h2 + 10) { this.reset(); } }
+                draw(ctx) { const alpha = Math.min(1, this.life / this.maxLife) * 0.35; ctx.fillStyle = `rgba(255, 215, 0, ${alpha})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
             }
+            for (let i = 0; i < 70; i++) particles2.push(new Particle2());
+            function animate2() { ctx2.clearRect(0, 0, w2, h2); for (let p of particles2) { p.update(); p.draw(ctx2); } requestAnimationFrame(animate2); }
+            animate2();
 
-            const particleCount = 120;
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, width, height);
-                for (let p of particles) {
-                    p.update();
-                    p.draw(ctx);
-                }
-                requestAnimationFrame(animateParticles);
-            }
-            animateParticles();
-
-            // Interactivity on cards
-            const cards = document.querySelectorAll('.rank-card, .style-card');
+            const cards = document.querySelectorAll('.rank-card, .style-card, .info-card, .arena-card, .vehicle-card, .mechanic-card, .news-card, .training-card, .tool-card, .testimonial-card');
             cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.borderColor = '#ff4d2e';
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.borderColor = 'rgba(255,255,255,0.08)';
-                });
+                card.addEventListener('mouseenter', () => { card.style.borderColor = '#ff4d2e'; card.style.boxShadow = '0 30px 60px rgba(255, 77, 46, 0.35)'; });
+                card.addEventListener('mouseleave', () => { card.style.borderColor = 'rgba(255,255,255,0.08)'; card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.6)'; });
             });
+
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const observerOptions = { threshold: 0.5 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-count'));
+                        let current = 0;
+                        const increment = Math.ceil(target / 60);
+                        const interval = setInterval(() => { current += increment; if (current >= target) { current = target; clearInterval(interval); } el.textContent = current.toLocaleString(); }, 30);
+                        observer.unobserve(el);
+                    }
+                });
+            }, observerOptions);
+            statNumbers.forEach(num => observer.observe(num));
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } });
+            });
+
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) { navbar.style.background = 'rgba(10, 10, 18, 0.92)'; navbar.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.7)'; }
+                else { navbar.style.background = 'rgba(10, 10, 18, 0.8)'; navbar.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.6)'; }
+            });
+
+            console.log('🚀 ROCKET LEAGUE PROFESSIONAL GROUP - Web cargada exitosamente.');
+            console.log('🏆 La mejor comunidad de Rocket League Sideswipe del universo.');
         })();
     </script>
 </body>
