@@ -902,10 +902,8 @@
     <canvas id="particles-canvas"></canvas>
     <canvas id="particles-canvas2"></canvas>
 
-    <!-- Admin trigger button (discreto) -->
     <button class="admin-trigger" id="adminTrigger" title="Acceso moderador">🛡️</button>
 
-    <!-- Admin overlay and panel -->
     <div id="admin-overlay"></div>
     <div id="admin-panel">
         <button class="btn-close" id="closeAdmin">&times;</button>
@@ -935,9 +933,9 @@
                 </div>
             </div>
             <ul class="nav-links" id="navLinks">
+                <li><a href="#rangos">Rangos</a></li>
                 <li><a href="#informacion">Info</a></li>
                 <li><a href="#noticias">Noticias</a></li>
-                <li><a href="#rangos">Rangos</a></li>
                 <li><a href="#estilos">Estilos</a></li>
                 <li><a href="#entrenamiento">Guía</a></li>
                 <li class="nav-dropdown" id="dropdownMas">
@@ -966,7 +964,7 @@
                 <div class="hero-content">
                     <h1>ROCKET LEAGUE <span class="highlight">SIDESWIPE</span></h1>
                     <p class="hero-sub">ELITE PROFESSIONAL GROUP · DOMINA EL CAMPO MÓVIL</p>
-                    <p class="hero-desc">Comunidad en crecimiento. Somos pocos pero apasionados. Únete a los 6 miembros fundadores y sé parte de la élite desde el principio. Estrategias, coaching y mucho más te esperan.</p>
+                    <p class="hero-desc">Comunidad en crecimiento. Somos pocos pero apasionados. Únete a los 6 miembros fundadores y sé parte de la élite desde el principio.</p>
                     <div style="display:flex; gap:1rem; flex-wrap:wrap;">
                         <a href="#unirse" class="btn-glow">🚀 UNIRSE AHORA</a>
                         <a href="#rangos" class="btn-outline">🏆 VER RANGOS</a>
@@ -981,76 +979,10 @@
         </section>
         <div class="section-divider"></div>
 
-        <section id="informacion" class="section-dark">
-            <h2 class="section-title">📖 INFORMACIÓN GENERAL</h2>
-            <p class="section-subtitle">Todo lo que necesitas saber sobre Rocket League Sideswipe y nuestra comunidad.</p>
-            <div class="info-box">
-                <div style="display:flex; flex-wrap:wrap; gap:3rem; align-items: flex-start;">
-                    <div style="flex:2; min-width:280px;">
-                        <h3 style="font-family:'Orbitron',sans-serif; font-size:2rem; margin-bottom:1.2rem;">🚀 ¿QUÉ ES ROCKET LEAGUE SIDESWIPE?</h3>
-                        <p style="font-size:1.1rem; margin-bottom:1.2rem;">Rocket League Sideswipe es la adaptación oficial para móviles del aclamado juego de Psyonix. Con perspectiva lateral 2D, partidas 1v1 y 2v2 frenéticas, y controles adaptados a pantallas táctiles.</p>
-                        <p>Nuestra comunidad <strong>ROCKET LEAGUE PROFESSIONAL GROUP</strong> es un espacio pequeño pero dedicado para jugadores hispanohablantes que buscan mejorar, compartir estrategias y disfrutar del juego en un ambiente respetuoso.</p>
-                        <div class="info-mini-box">
-                            <strong>🎮 Desarrollador:</strong> Psyonix (Epic Games) &nbsp;|&nbsp; <strong>📱 Plataformas:</strong> iOS, Android &nbsp;|&nbsp; <strong>🌍 Lanzamiento:</strong> Noviembre 2021
-                        </div>
-                    </div>
-                    <div style="flex:1; min-width:220px; background:rgba(255,77,46,0.08); border-radius:35px; padding:2rem; text-align:center;">
-                        <span style="font-size:5rem;">🏟️</span>
-                        <p style="font-weight:700; font-size:1.2rem;">MODOS DE JUEGO</p>
-                        <ul style="list-style:none; padding:0; text-align:left; margin-top:0.5rem;">
-                            <li style="padding:0.4rem 0;">⚽ Duelo (1v1)</li>
-                            <li style="padding:0.4rem 0;">🤝 Dobles (2v2)</li>
-                            <li style="padding:0.4rem 0;">🏀 Baloncesto</li>
-                            <li style="padding:0.4rem 0;">🏐 Voleibol</li>
-                            <li style="padding:0.4rem 0;">🎯 Modo práctica libre</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="stat-counter-grid" id="statGrid">
-                <div class="stat-item"><div class="stat-number" data-count="6">6</div><div class="stat-label">Miembros en Discord</div></div>
-                <div class="stat-item"><div class="stat-number" data-count="0">0</div><div class="stat-label">Torneos Realizados</div></div>
-                <div class="stat-item"><div class="stat-number" data-count="0">0</div><div class="stat-label">Coaches Activos</div></div>
-                <div class="stat-item"><div class="stat-number" data-count="24">24</div><div class="stat-label">Horas de Soporte Diario</div></div>
-            </div>
-        </section>
-        <div class="section-divider"></div>
-
-        <section id="noticias" class="section-darker">
-            <h2 class="section-title">📢 NOTICIAS Y ACTUALIZACIONES</h2>
-            <p class="section-subtitle">Novedades de la comunidad y del juego. ¡ estamos empezando!</p>
-            <div class="card-grid" id="newsGrid">
-                <div class="news-card">
-                    <div class="news-icon">🚀</div>
-                    <h4 class="news-name" style="color:var(--accent);">¡Comunidad en formación!</h4>
-                    <p style="font-size:0.9rem; color:var(--text-secondary);">Somos 6 miembros iniciales. ¡Únete ahora y sé parte de la fundación de RLPG! Buscamos jugadores apasionados.</p>
-                    <span style="background:var(--accent); padding:0.2rem 0.8rem; border-radius:15px; font-size:0.75rem;">NUEVO</span>
-                </div>
-                <div class="news-card">
-                    <div class="news-icon">🎮</div>
-                    <h4 class="news-name" style="color:var(--blue-electric);">Nuevo Modo: Voleibol 2v2</h4>
-                    <p style="font-size:0.9rem; color:var(--text-secondary);">Psyonix lanzó Voleibol 2v2. ¡Estamos probándolo! Comparte tus estrategias en Discord.</p>
-                </div>
-                <div class="news-card">
-                    <div class="news-icon">📱</div>
-                    <h4 class="news-name" style="color:var(--purple-neon);">Optimización para iOS 20</h4>
-                    <p style="font-size:0.9rem; color:var(--text-secondary);">Rocket League Sideswipe ahora compatible con iOS 20. Mejor rendimiento en nuevos dispositivos.</p>
-                </div>
-            </div>
-            <div class="info-box" id="eventsBox">
-                <h3 style="font-family:'Orbitron',sans-serif;">📅 PRÓXIMOS EVENTOS</h3>
-                <ul style="list-style:none; padding:0; color:var(--text-secondary);" id="eventsList">
-                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🚀 Próximamente: primer torneo de la comunidad</li>
-                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🧠 Sesión de coaching grupal (fecha por definir)</li>
-                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">🎉 Evento de bienvenida para nuevos miembros</li>
-                </ul>
-            </div>
-        </section>
-        <div class="section-divider"></div>
-
+        <!-- ==================== SECCIÓN RANGOS (AHORA ARRIBA DEL TODO) ==================== -->
         <section id="rangos" class="section-deep">
             <h2 class="section-title">🏆 RANGOS Y ROLES</h2>
-            <p class="section-subtitle">Sistema completo de rangos de habilidad y roles especiales.</p>
+            <p class="section-subtitle">Sistema completo de rangos de habilidad y roles especiales. ¡Lo más importante de nuestra comunidad!</p>
             <h3 style="text-align:center; font-family:'Orbitron',sans-serif; margin:2rem 0 1.5rem; font-size:1.8rem; color:var(--gold);">🎖️ RANGOS DE HABILIDAD</h3>
             <div class="card-grid">
                 <div class="rank-card"><div class="rank-icon">🥉</div><div class="rank-name" style="color:#cd7f32;">BRONCE</div></div>
@@ -1093,7 +1025,68 @@
         </section>
         <div class="section-divider"></div>
 
-        <!-- resto de secciones igual, solo adapto algunas frases a comunidad pequeña -->
+        <!-- ==================== SECCIÓN INFORMACIÓN ==================== -->
+        <section id="informacion" class="section-dark">
+            <h2 class="section-title">📖 INFORMACIÓN GENERAL</h2>
+            <p class="section-subtitle">Todo lo que necesitas saber sobre Rocket League Sideswipe y nuestra comunidad.</p>
+            <div class="info-box">
+                <div style="display:flex; flex-wrap:wrap; gap:3rem; align-items: flex-start;">
+                    <div style="flex:2; min-width:280px;">
+                        <h3 style="font-family:'Orbitron',sans-serif; font-size:2rem; margin-bottom:1.2rem;">🚀 ¿QUÉ ES ROCKET LEAGUE SIDESWIPE?</h3>
+                        <p style="font-size:1.1rem; margin-bottom:1.2rem;">Rocket League Sideswipe es la adaptación oficial para móviles del aclamado juego de Psyonix. Con perspectiva lateral 2D, partidas 1v1 y 2v2 frenéticas, y controles adaptados a pantallas táctiles.</p>
+                        <p>Nuestra comunidad <strong>ROCKET LEAGUE PROFESSIONAL GROUP</strong> es un espacio pequeño pero dedicado para jugadores hispanohablantes que buscan mejorar, compartir estrategias y disfrutar del juego en un ambiente respetuoso.</p>
+                        <div class="info-mini-box">
+                            <strong>🎮 Desarrollador:</strong> Psyonix (Epic Games) &nbsp;|&nbsp; <strong>📱 Plataformas:</strong> iOS, Android &nbsp;|&nbsp; <strong>🌍 Lanzamiento:</strong> Noviembre 2021
+                        </div>
+                    </div>
+                    <div style="flex:1; min-width:220px; background:rgba(255,77,46,0.08); border-radius:35px; padding:2rem; text-align:center;">
+                        <span style="font-size:5rem;">🏟️</span>
+                        <p style="font-weight:700; font-size:1.2rem;">MODOS DE JUEGO</p>
+                        <ul style="list-style:none; padding:0; text-align:left; margin-top:0.5rem;">
+                            <li style="padding:0.4rem 0;">⚽ Duelo (1v1)</li>
+                            <li style="padding:0.4rem 0;">🤝 Dobles (2v2)</li>
+                            <li style="padding:0.4rem 0;">🏀 Baloncesto</li>
+                            <li style="padding:0.4rem 0;">🏐 Voleibol</li>
+                            <li style="padding:0.4rem 0;">🎯 Modo práctica libre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-counter-grid" id="statGrid">
+                <div class="stat-item"><div class="stat-number" data-count="6">6</div><div class="stat-label">Miembros en Discord</div></div>
+                <div class="stat-item"><div class="stat-number" data-count="0">0</div><div class="stat-label">Torneos Realizados</div></div>
+                <div class="stat-item"><div class="stat-number" data-count="0">0</div><div class="stat-label">Coaches Activos</div></div>
+                <div class="stat-item"><div class="stat-number" data-count="24">24</div><div class="stat-label">Horas de Soporte Diario</div></div>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
+        <section id="noticias" class="section-darker">
+            <h2 class="section-title">📢 NOTICIAS Y ACTUALIZACIONES</h2>
+            <p class="section-subtitle">Novedades de la comunidad y del juego. ¡Estamos empezando!</p>
+            <div class="card-grid" id="newsGrid">
+                <div class="news-card">
+                    <div class="news-icon">🚀</div>
+                    <h4 class="news-name" style="color:var(--accent);">¡Comunidad en formación!</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">Somos 6 miembros iniciales. ¡Únete ahora y sé parte de la fundación de RLPG!</p>
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">🎮</div>
+                    <h4 class="news-name" style="color:var(--blue-electric);">Nuevo Modo: Voleibol 2v2</h4>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">Psyonix lanzó Voleibol 2v2. ¡Estamos probándolo!</p>
+                </div>
+            </div>
+            <div class="info-box" id="eventsBox">
+                <h3 style="font-family:'Orbitron',sans-serif;">📅 PRÓXIMOS EVENTOS</h3>
+                <ul style="list-style:none; padding:0; color:var(--text-secondary);" id="eventsList">
+                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🚀 Próximamente: primer torneo de la comunidad</li>
+                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">🧠 Sesión de coaching grupal (fecha por definir)</li>
+                    <li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px;">🎉 Evento de bienvenida para nuevos miembros</li>
+                </ul>
+            </div>
+        </section>
+        <div class="section-divider"></div>
+
         <section id="estilos" class="section-alt">
             <h2 class="section-title">🎭 ESTILO DE JUEGO</h2>
             <p class="section-subtitle">Define tu estilo y consigue el rol que te represente.</p>
@@ -1188,7 +1181,6 @@
 
     <script>
         (function() {
-            // Cursor trail
             const trail = document.getElementById('cursorTrail');
             let mouseX = 0, mouseY = 0, trailX = 0, trailY = 0;
             document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
@@ -1204,7 +1196,6 @@
             document.addEventListener('mouseleave', () => { trail.style.opacity = '0'; });
             document.addEventListener('mouseenter', () => { trail.style.opacity = '0.7'; });
 
-            // Particles 1
             const canvas1 = document.getElementById('particles-canvas');
             const ctx1 = canvas1.getContext('2d');
             let w1, h1, particles1 = [];
@@ -1225,7 +1216,6 @@
             function anim1(){ ctx1.clearRect(0,0,w1,h1); particles1.forEach(p=>{p.update();p.draw(ctx1);}); requestAnimationFrame(anim1); }
             anim1();
 
-            // Particles 2
             const canvas2 = document.getElementById('particles-canvas2');
             const ctx2 = canvas2.getContext('2d');
             let w2, h2, particles2 = [];
@@ -1241,17 +1231,13 @@
             function anim2(){ ctx2.clearRect(0,0,w2,h2); particles2.forEach(p=>{p.update();p.draw(ctx2);}); requestAnimationFrame(anim2); }
             anim2();
 
-            // Card hover
             const cards = document.querySelectorAll('.rank-card, .style-card, .info-card, .arena-card, .vehicle-card, .mechanic-card, .news-card, .training-card, .tool-card, .testimonial-card');
             cards.forEach(c=>{ c.addEventListener('mouseenter',()=>{c.style.borderColor='#ff4d2e';c.style.boxShadow='0 30px 60px rgba(255,77,46,0.35)';}); c.addEventListener('mouseleave',()=>{c.style.borderColor='rgba(255,255,255,0.08)';c.style.boxShadow='0 20px 40px rgba(0,0,0,0.6)';}); });
 
-            // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',function(e){e.preventDefault(); const t=document.querySelector(this.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'});});});
 
-            // Navbar scroll effect
             window.addEventListener('scroll',()=>{ const nb=document.getElementById('navbar'); if(window.scrollY>50){nb.style.background='rgba(10,10,18,0.92)';nb.style.boxShadow='0 20px 50px rgba(0,0,0,0.7)';} else {nb.style.background='rgba(10,10,18,0.8)';nb.style.boxShadow='0 15px 40px rgba(0,0,0,0.6)';}});
 
-            // Dropdown "Más" close on outside click
             const dropdown = document.getElementById('dropdownMas');
             const dropdownToggle = document.getElementById('dropdownToggle');
             dropdownToggle.addEventListener('click', function(e) {
@@ -1264,12 +1250,10 @@
                     dropdown.classList.remove('active');
                 }
             });
-            // Cerrar dropdown al hacer clic en un enlace interno
             document.querySelectorAll('.nav-dropdown-content a').forEach(link => {
                 link.addEventListener('click', () => dropdown.classList.remove('active'));
             });
 
-            // ========== ADMIN PANEL ==========
             const adminTrigger = document.getElementById('adminTrigger');
             const adminOverlay = document.getElementById('admin-overlay');
             const adminPanel = document.getElementById('admin-panel');
@@ -1286,7 +1270,6 @@
                 if (code === '7243') {
                     adminOverlay.style.display = 'block';
                     adminPanel.style.display = 'block';
-                    // cargar valores actuales desde el DOM (o localStorage)
                     const statMembers = document.querySelector('#statGrid .stat-item:nth-child(1) .stat-number');
                     const statTournaments = document.querySelector('#statGrid .stat-item:nth-child(2) .stat-number');
                     const statCoaches = document.querySelector('#statGrid .stat-item:nth-child(3) .stat-number');
@@ -1295,7 +1278,6 @@
                     adminTournaments.value = statTournaments ? statTournaments.textContent : '0';
                     adminCoaches.value = statCoaches ? statCoaches.textContent : '0';
                     adminSupport.value = statSupport ? statSupport.textContent : '24';
-                    // Cargar eventos desde localStorage
                     const savedEvents = localStorage.getItem('rlpg_events');
                     if (savedEvents) {
                         adminEvents.value = savedEvents;
@@ -1323,7 +1305,6 @@
                 const support = adminSupport.value;
                 const eventsText = adminEvents.value;
 
-                // Actualizar estadísticas en el DOM
                 const statItems = document.querySelectorAll('#statGrid .stat-number');
                 if (statItems.length >= 4) {
                     statItems[0].textContent = members;
@@ -1332,21 +1313,17 @@
                     statItems[3].textContent = support;
                 }
 
-                // Actualizar eventos
                 const eventsList = document.getElementById('eventsList');
                 if (eventsList && eventsText) {
                     const eventsArray = eventsText.split(',').filter(e => e.trim() !== '');
                     eventsList.innerHTML = eventsArray.map(e => `<li style="padding:0.8rem; background:rgba(255,255,255,0.02); border-radius:15px; margin-bottom:0.8rem;">${e.trim()}</li>`).join('');
                 }
 
-                // Guardar eventos en localStorage
                 localStorage.setItem('rlpg_events', eventsText);
-
                 closeAdminPanel();
                 alert('Cambios guardados correctamente.');
             });
 
-            // Al cargar, recuperar eventos guardados
             window.addEventListener('DOMContentLoaded', function() {
                 const savedEvents = localStorage.getItem('rlpg_events');
                 if (savedEvents) {
